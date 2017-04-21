@@ -1,0 +1,17 @@
+
+@Configuration
+public class CacheConfig extends RedisCacheConfigurerAdapter {
+
+    // @CacheConfig(cacheNames = PayCacheKeys.PAY_CONFIG)
+    // @Cacheable
+    // @CacheEvict(key = "#p0.id")
+
+    @Override
+    protected Set<CacheManager> customCacheManagers() {
+        Set<CacheManager> cacheManagers = new HashSet<>();
+        //cacheManagers.add(newCollectionCacheManager(String.class, "test", DEFAULT_EXPIRE_TIME));
+        cacheManagers.add(newCacheManager(City.class, "city"));
+        cacheManagers.add(newCollectionCacheManager(City.class, "cities", DEFAULT_EXPIRE_TIME));
+        return cacheManagers;
+    }
+}
