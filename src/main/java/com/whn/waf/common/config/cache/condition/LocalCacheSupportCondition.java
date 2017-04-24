@@ -1,6 +1,6 @@
 package com.whn.waf.common.config.cache.condition;
 
-import com.whn.waf.common.context.WafApplicationContext;
+import com.whn.waf.common.context.WafProperties;
 import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
@@ -14,7 +14,7 @@ public class LocalCacheSupportCondition implements Condition{
 	@Override
 	public boolean matches(ConditionContext context,
 			AnnotatedTypeMetadata metadata) {
-		return !WafApplicationContext.isRedisCacheSupport();
+		return !WafProperties.isRedisCacheSupport();
 	}
 
 }

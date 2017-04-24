@@ -1,6 +1,6 @@
 package com.whn.waf.common.exception.resolver;
 
-import com.whn.waf.common.context.WafApplicationContext;
+import com.whn.waf.common.context.WafProperties;
 import com.whn.waf.common.exception.handler.AbstractRestErrorHandler;
 import com.whn.waf.common.exception.support.ResponseErrorMessage;
 import com.whn.waf.common.support.WafJsonMapper;
@@ -99,7 +99,7 @@ public class WafRestErrorResolver implements WafErrorResolver, Ordered {
             serverTime = errorMessage.getServerTime();
             code = errorMessage.getCode();
             message = errorMessage.getMessage();
-            if (WafApplicationContext.isDebugMode()) {
+            if (WafProperties.isDebugMode()) {
                 detail = errorMessage.getDetail();
                 cause = errorMessage.getCause();
             }

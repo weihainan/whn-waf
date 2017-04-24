@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import com.whn.waf.common.config.cache.condition.RedisCacheSupportCondition;
-import com.whn.waf.common.context.WafApplicationContext;
+import com.whn.waf.common.context.WafProperties;
 import com.whn.waf.common.exception.WafBizException;
 import com.whn.waf.common.support.WafJsonMapper;
 import org.springframework.beans.factory.annotation.Value;
@@ -67,7 +67,7 @@ public class RedisCacheConfigurerAdapter extends AbstractCacheConfigurerAdapter 
     private boolean testOnBorrow;
 
     public RedisCacheConfigurerAdapter() {
-        if (!WafApplicationContext.isRedisCacheSupport()) {
+        if (!WafProperties.isRedisCacheSupport()) {
             throw WafBizException.of("when redis cache is unavailable,your cache config must extends LocalCacheConfigurerAdapter");
         }
         objectMapper = objectMapper();

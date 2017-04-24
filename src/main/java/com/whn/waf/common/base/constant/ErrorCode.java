@@ -1,6 +1,6 @@
 package com.whn.waf.common.base.constant;
 
-import com.whn.waf.common.context.WafApplicationContext;
+import com.whn.waf.common.context.WafProperties;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -28,7 +28,7 @@ public enum ErrorCode implements IErrorCode {
     private final HttpStatus httpStatus;
     private final String code;
     private final String message;
-    public static final String PREFIX = WafApplicationContext.getErrorCodePrefix();
+    public static final String PREFIX = WafProperties.getErrorCodePrefix();
 
     ErrorCode(HttpStatus httpStatus, String code, String message) {
         this.httpStatus = httpStatus;

@@ -1,6 +1,6 @@
 package com.whn.waf.common.exception.handler;
 
-import com.whn.waf.common.context.WafApplicationContext;
+import com.whn.waf.common.context.WafProperties;
 import com.whn.waf.common.exception.support.RemoteResponseSupport;
 import com.whn.waf.common.exception.support.ResponseErrorMessage;
 import org.springframework.http.HttpHeaders;
@@ -26,7 +26,7 @@ public class RemoteResponseSupportExceptionRestErrorHandler extends AbstractRest
 
     public RemoteResponseSupportExceptionRestErrorHandler(HttpStatus httpStatus) {
         this.httpStatus      = httpStatus;
-        this.httpStatusProxy = Boolean.valueOf(WafApplicationContext.getProperty(WAF_EXCEPTION_REMOTE_HTTPSTATUS_PROXY, "true"));
+        this.httpStatusProxy = Boolean.valueOf(WafProperties.getProperty(WAF_EXCEPTION_REMOTE_HTTPSTATUS_PROXY, "true"));
     }
 
     @Override

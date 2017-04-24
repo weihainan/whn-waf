@@ -1,7 +1,7 @@
 package com.whn.waf.common.client.http;
 
 
-import com.whn.waf.common.context.WafApplicationContext;
+import com.whn.waf.common.context.WafProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -57,14 +57,14 @@ public class WafHttpClient {
     protected WafRestTemplate restTemplate;
 
     static {
-        Properties defaultProperties = WafApplicationContext.getProperties();
+        Properties defaultProperties = WafProperties.getProperties();
         defaultProperties.setProperty(WafHttpClient.WAF_CLIENT_CONNECT_TIMEOUT, WAF_CLIENT_CONNECT_TIMEOUT_VALUE);
         defaultProperties.setProperty(WafHttpClient.WAF_CLIENT_SOCKET_TIMEOUT, WAF_CLIENT_SOCKET_TIMEOUT_VALUE);
         defaultProperties.setProperty(WafHttpClient.WAF_CLIENT_MAX_TOTAL, WAF_CLIENT_MAX_TOTAL_VALUE);
         defaultProperties.setProperty(WafHttpClient.WAF_CLIENT_MAX_PER_ROUTE, WAF_CLIENT_MAX_PER_ROUTE_VALUE);
 
-        WAF_CLIENT_CONNECT_TIMEOUT_INT_VALUE = WafApplicationContext.getPropertyForInteger(WAF_CLIENT_CONNECT_TIMEOUT);
-        WAF_CLIENT_SOCKET_TIMEOUT_INT_VALUE = WafApplicationContext.getPropertyForInteger(WAF_CLIENT_SOCKET_TIMEOUT);
+        WAF_CLIENT_CONNECT_TIMEOUT_INT_VALUE = WafProperties.getPropertyForInteger(WAF_CLIENT_CONNECT_TIMEOUT);
+        WAF_CLIENT_SOCKET_TIMEOUT_INT_VALUE = WafProperties.getPropertyForInteger(WAF_CLIENT_SOCKET_TIMEOUT);
     }
 
     public WafHttpClient() {

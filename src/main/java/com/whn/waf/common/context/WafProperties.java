@@ -13,10 +13,11 @@ import org.springframework.core.io.support.PropertiesLoaderUtils;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 
-public class WafApplicationContext {
+public class WafProperties {
 
     // 系统全局配置文件名称 放在resource文件下
     private static final String WAF_PROPERTIES_FILE_NAME = "waf.properties";
@@ -26,15 +27,24 @@ public class WafApplicationContext {
     private static final String ERROR_CODE_PREFIX = "error.code.prefix";
 
     private static Properties wafProperties;
+    private static Properties defaultProperties;
+
 
     private static boolean redisCacheSupport; // 是否是redis支持的缓存
 
     static {
+        defaultProperties = new Properties();
         try {
             redisCacheSupport = existsPropertiesFile("redis.properties");
-            wafProperties = PropertiesLoaderUtils
+
+            wafProperties = new Properties(defaultProperties);
+            InputStream stream = WafProperties.class.getClassLoader().getResourceAsStream(WAF_PROPERTIES_FILE_NAME);
+            if (stream != null) {
+                wafProperties.load(stream);
+            }
+            /*wafProperties = PropertiesLoaderUtils
                     .loadProperties(new ClassPathResource(
-                            WAF_PROPERTIES_FILE_NAME));
+                            WAF_PROPERTIES_FILE_NAME));*/
             checkProperties(wafProperties);
         } catch (FileNotFoundException e) {
             throw WafBizException.of(ErrorCode.CONFIG_MISSING, "配置文件未找到："
@@ -91,6 +101,10 @@ public class WafApplicationContext {
 
     public static Properties getProperties() {
         return wafProperties;
+    }
+
+    public static Properties getDefaultProperties() {
+        return defaultProperties;
     }
 
     public static String getProperty(String key) {

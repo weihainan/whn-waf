@@ -1,6 +1,6 @@
 package com.whn.waf.common.client.http;
 
-import com.whn.waf.common.context.WafApplicationContext;
+import com.whn.waf.common.context.WafProperties;
 import org.apache.http.client.HttpClient;
 import org.apache.http.config.ConnectionConfig;
 import org.apache.http.config.SocketConfig;
@@ -42,8 +42,8 @@ public class WafHttpClientBuilder {
         poolingConnectionManager.setDefaultSocketConfig( getConnectionManagerSocketConfig() );
         poolingConnectionManager.setDefaultConnectionConfig( getConnectionManagerConnectionConfig() );
         //设置同时最大连接数
-        poolingConnectionManager.setMaxTotal(WafApplicationContext.getPropertyForInteger(WafHttpClient.WAF_CLIENT_MAX_TOTAL));
-        poolingConnectionManager.setDefaultMaxPerRoute(WafApplicationContext.getPropertyForInteger(WafHttpClient.WAF_CLIENT_MAX_PER_ROUTE));
+        poolingConnectionManager.setMaxTotal(WafProperties.getPropertyForInteger(WafHttpClient.WAF_CLIENT_MAX_TOTAL));
+        poolingConnectionManager.setDefaultMaxPerRoute(WafProperties.getPropertyForInteger(WafHttpClient.WAF_CLIENT_MAX_PER_ROUTE));
         return poolingConnectionManager;
     }
 
@@ -85,7 +85,7 @@ public class WafHttpClientBuilder {
 
     protected SocketConfig getConnectionManagerSocketConfig() {
         return SocketConfig.custom()
-                .setSoTimeout(WafApplicationContext.getPropertyForInteger(WafHttpClient.WAF_CLIENT_SOCKET_TIMEOUT))
+                .setSoTimeout(WafProperties.getPropertyForInteger(WafHttpClient.WAF_CLIENT_SOCKET_TIMEOUT))
                 .build();
     }
 

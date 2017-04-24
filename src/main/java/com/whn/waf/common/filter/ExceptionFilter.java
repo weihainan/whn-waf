@@ -1,6 +1,6 @@
 package com.whn.waf.common.filter;
 
-import com.whn.waf.common.context.WafApplicationContext;
+import com.whn.waf.common.context.WafProperties;
 import com.whn.waf.common.exception.handler.MethodArgumentNotValidExceptionHandler;
 import com.whn.waf.common.exception.resolver.WafErrorResolver;
 import com.whn.waf.common.exception.resolver.WafRestErrorResolver;
@@ -40,7 +40,7 @@ public class ExceptionFilter extends OncePerRequestFilter {
      */
     public WafErrorResolver wafErrorResolver() {
         WafRestErrorResolver resolver;
-        if (Boolean.parseBoolean(WafApplicationContext.getProperty(WAF_EXCEPTION_FRIENDLY_DISABLED,"true"))) {
+        if (Boolean.parseBoolean(WafProperties.getProperty(WAF_EXCEPTION_FRIENDLY_DISABLED,"true"))) {
             resolver = new WafRestErrorResolver();
         }else {
             resolver = new FriendlyWafRestErrorResolver();

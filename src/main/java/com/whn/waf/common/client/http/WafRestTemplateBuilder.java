@@ -1,6 +1,6 @@
 package com.whn.waf.common.client.http;
 
-import com.whn.waf.common.context.WafApplicationContext;
+import com.whn.waf.common.context.WafProperties;
 import org.apache.http.HttpRequestInterceptor;
 import org.apache.http.HttpResponseInterceptor;
 import org.apache.http.client.HttpClient;
@@ -39,8 +39,8 @@ public class WafRestTemplateBuilder {
                 httpClient,
                 requestInterceptor,
                 responseInterceptor,
-                WafApplicationContext.getPropertyForInteger(WafHttpClient.WAF_CLIENT_CONNECT_TIMEOUT),
-                WafApplicationContext.getPropertyForInteger(WafHttpClient.WAF_CLIENT_SOCKET_TIMEOUT));
+                WafProperties.getPropertyForInteger(WafHttpClient.WAF_CLIENT_CONNECT_TIMEOUT),
+                WafProperties.getPropertyForInteger(WafHttpClient.WAF_CLIENT_SOCKET_TIMEOUT));
     }
 
 
@@ -53,8 +53,8 @@ public class WafRestTemplateBuilder {
         return build(
                 requestInterceptor,
                 responseInterceptor,
-                WafApplicationContext.getPropertyForInteger(WafHttpClient.WAF_CLIENT_CONNECT_TIMEOUT),
-                WafApplicationContext.getPropertyForInteger(WafHttpClient.WAF_CLIENT_SOCKET_TIMEOUT));
+                WafProperties.getPropertyForInteger(WafHttpClient.WAF_CLIENT_CONNECT_TIMEOUT),
+                WafProperties.getPropertyForInteger(WafHttpClient.WAF_CLIENT_SOCKET_TIMEOUT));
     }
 
     public WafRestTemplate build(HttpRequestInterceptor requestInterceptor,

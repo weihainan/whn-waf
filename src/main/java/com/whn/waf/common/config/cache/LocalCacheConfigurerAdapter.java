@@ -3,7 +3,7 @@ package com.whn.waf.common.config.cache;
 import java.util.concurrent.TimeUnit;
 
 import com.whn.waf.common.config.cache.condition.LocalCacheSupportCondition;
-import com.whn.waf.common.context.WafApplicationContext;
+import com.whn.waf.common.context.WafProperties;
 import com.whn.waf.common.exception.WafBizException;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.guava.GuavaCacheManager;
@@ -21,7 +21,7 @@ import com.google.common.cache.CacheBuilder;
 public class LocalCacheConfigurerAdapter extends AbstractCacheConfigurerAdapter {
 
     public LocalCacheConfigurerAdapter() {
-        if (WafApplicationContext.isRedisCacheSupport()) {
+        if (WafProperties.isRedisCacheSupport()) {
             throw WafBizException.of("when redis cache is available,your cache config must extends RedisCacheConfigurerAdapter");
         }
     }
