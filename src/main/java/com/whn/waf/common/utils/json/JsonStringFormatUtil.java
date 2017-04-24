@@ -1,4 +1,4 @@
-package com.whn.waf.common.utils;
+package com.whn.waf.common.utils.json;
 
 
 import net.sf.json.JSONObject;
@@ -11,15 +11,14 @@ public class JsonStringFormatUtil {
 
     /**
      * 打印输入到控制台
-     *
-     * @param jsonStr
-     * @author lizhgb
-     * @Date 2015-10-14 下午1:17:22
      */
     public static void printJson(String jsonStr) {
         System.out.println(formatJson(jsonStr));
     }
 
+    /**
+     * 验证字符串是否符合json格式
+     */
     public static boolean valid(String jsonStr) {
         try {
             JSONObject.fromObject(jsonStr);
@@ -31,11 +30,6 @@ public class JsonStringFormatUtil {
 
     /**
      * 格式化
-     *
-     * @param jsonStr
-     * @return
-     * @author lizhgb
-     * @Date 2015-10-14 下午1:17:35
      */
     public static String formatJson(String jsonStr) {
         if (null == jsonStr || "".equals(jsonStr)) return "";
@@ -78,11 +72,6 @@ public class JsonStringFormatUtil {
 
     /**
      * 添加space
-     *
-     * @param sb
-     * @param indent
-     * @author lizhgb
-     * @Date 2015-10-14 上午10:38:04
      */
     private static void addIndentBlank(StringBuilder sb, int indent) {
         for (int i = 0; i < indent; i++) {

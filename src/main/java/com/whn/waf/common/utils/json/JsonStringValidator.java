@@ -1,5 +1,8 @@
+package com.whn.waf.common.utils.json;
+
 /**
- * 用于校验一个字符串是否是合法的JSON格式
+ * 用于校验一个字符串是否是合法的JSON格式<br/>
+ * 使用JsonStringFormatUtil.valid方法更准确
  */
 
 import java.text.CharacterIterator;
@@ -22,8 +25,7 @@ public class JsonStringValidator {
      */
     public boolean validate(String input) {
         input = input.trim();
-        boolean ret = valid(input);
-        return ret;
+        return valid(input);
     }
 
     private boolean valid(String input) {

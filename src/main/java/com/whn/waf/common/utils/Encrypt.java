@@ -4,6 +4,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
+ * 建议使用 org.apache.commons.codec.digest.DigestUtils<br/>
+ * String id = DigestUtils.md5Hex(String.format("%s_%s_%s_%s", application, tenant, ownerId, auditorId));
+ *
  * @author weihainan.
  * @since 0.1 created on 2017/2/9.
  */
