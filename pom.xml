@@ -4,7 +4,7 @@
     <groupId>com.whn.waf</groupId>
     <artifactId>waf</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0.RELEASE</version>
     <name>waf</name>
     <url>http://maven.apache.org</url>
 
