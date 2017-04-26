@@ -46,7 +46,7 @@ public class Context implements ApplicationContextAware {
         return applicationContext.getBean(requiredType);
     }
 
-    public HttpServletRequest getRequest() {
+    public static HttpServletRequest getRequest() {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         return attributes.getRequest();
     }
