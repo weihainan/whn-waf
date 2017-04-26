@@ -4,12 +4,21 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @author weihainan.
  * @since 0.1 created on 2017/4/20.
  */
 public class CommonUtil {
+
+    public static String uuid() {
+        return UUID.randomUUID().toString();
+    }
+
+    public static String uuid32() {
+        return uuid().replace("-", "").toUpperCase();
+    }
 
     public static String dealStrIfNull(Object value) {
         if (value == null) {
@@ -34,7 +43,17 @@ public class CommonUtil {
         return !isBlank(string);
     }
 
-    public  static boolean isEmpty(Collection collection) {
+    /**
+     * 获得字符串的描述信息 前30个字符
+     */
+    public static String getDescString(String str) {
+        if (isNotBlank(str) && str.trim().length() > 30) {
+            return str.substring(0, 30);
+        }
+        return str;
+    }
+
+    public static boolean isEmpty(Collection collection) {
         return null == collection || collection.isEmpty();
     }
 
@@ -49,6 +68,18 @@ public class CommonUtil {
 
     public boolean isNotEmpty(Map map) {
         return !isEmpty(map);
+    }
+
+
+    public static String makeQueryStringAllRegExp(String str) {
+        return str.replace("\\", "\\\\").replace("*", "\\*")
+                .replace("+", "\\+").replace("|", "\\|")
+                .replace("{", "\\{").replace("}", "\\}")
+                .replace("(", "\\(").replace(")", "\\)")
+                .replace("^", "\\^").replace("$", "\\$")
+                .replace("[", "\\[").replace("]", "\\]")
+                .replace("?", "\\?").replace(",", "\\,")
+                .replace(".", "\\.");
     }
 
     public static void main(String[] args) {
