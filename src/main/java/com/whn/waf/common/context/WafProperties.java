@@ -31,11 +31,13 @@ public class WafProperties {
 
 
     private static boolean redisCacheSupport; // 是否是redis支持的缓存
+    private static boolean ehCacheSupport; // 是否是redis支持的缓存
 
     static {
         defaultProperties = new Properties();
         try {
             redisCacheSupport = existsPropertiesFile("redis.properties");
+            ehCacheSupport = existsPropertiesFile("ehcache.xml");
 
             wafProperties = new Properties(defaultProperties);
             InputStream stream = WafProperties.class.getClassLoader().getResourceAsStream(WAF_PROPERTIES_FILE_NAME);
@@ -97,6 +99,10 @@ public class WafProperties {
 
     public static boolean isRedisCacheSupport() {
         return redisCacheSupport;
+    }
+
+    public static boolean isEhcacheCacheSupport() {
+        return ehCacheSupport;
     }
 
     public static Properties getProperties() {

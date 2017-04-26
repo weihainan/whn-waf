@@ -1,10 +1,12 @@
 package com.whn.waf.common.config.cache.ehcache;
 
+import com.whn.waf.common.config.cache.condition.LocalCacheSupportCondition;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
@@ -13,6 +15,7 @@ import org.springframework.core.io.ClassPathResource;
  * @since 0.1 created on 2017/4/19.
  */
 
+@Conditional(EhcacheSupportCondition.class)
 @Configuration
 @EnableCaching(proxyTargetClass = true)
 public class EhcacheLocalCacheConfig {
