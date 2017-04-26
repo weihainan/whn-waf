@@ -53,6 +53,19 @@ public class CommonUtil {
         return str;
     }
 
+    /**
+     * 获得字符串的描述信息 前n个字符
+     */
+    public static String getDescString(String str, int length) {
+        if (length < 0) {
+            length = 10;
+        }
+        if (isNotBlank(str) && str.trim().length() > length) {
+            return str.substring(0, length);
+        }
+        return str;
+    }
+
     public static boolean isEmpty(Collection collection) {
         return null == collection || collection.isEmpty();
     }
