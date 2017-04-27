@@ -3,6 +3,7 @@ package com.whn.waf.common.base.domain;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
@@ -19,10 +20,13 @@ import java.util.Date;
 public abstract class BizDomain<I extends Serializable> extends BaseDomain<I> {
 
     @LastModifiedDate
+    @Column(name="update_time")
+    @Field("update_time")
     private Date updateTime;
 
     @CreatedDate
-    @Column(updatable = false)
+    @Column(name="create_time", updatable = false)
+    @Field("create_time")
     private Date createTime;
 
     private boolean deleted;
