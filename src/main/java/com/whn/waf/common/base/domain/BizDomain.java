@@ -3,6 +3,7 @@ package com.whn.waf.common.base.domain;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.persistence.Column;
@@ -29,6 +30,7 @@ public abstract class BizDomain<I extends Serializable> extends BaseDomain<I> {
     @Field("create_time")
     private Date createTime;
 
+    @Indexed // mongodb
     private boolean deleted;
 
     public Date getCreateTime() {
