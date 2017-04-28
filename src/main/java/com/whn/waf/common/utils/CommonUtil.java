@@ -43,6 +43,10 @@ public class CommonUtil {
         return !isBlank(string);
     }
 
+    public static String checkNullAndConvert(String str) {
+        return isBlank(str) ? "" : str;
+    }
+
     /**
      * 获得字符串的描述信息 前30个字符
      */
