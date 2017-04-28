@@ -33,11 +33,16 @@ public class WafProperties {
     private static boolean redisCacheSupport; // 是否是redis支持的缓存
     private static boolean ehCacheSupport; // 是否是redis支持的缓存
 
+    private static boolean mySqlSupport;
+    private static boolean mongoSupport;
+
     static {
         defaultProperties = new Properties();
         try {
             redisCacheSupport = existsPropertiesFile("redis.properties");
             ehCacheSupport = existsPropertiesFile("ehcache.xml");
+            mySqlSupport = existsPropertiesFile("dbconfig.properties");
+            mongoSupport = existsPropertiesFile("mdb.properties");
 
             wafProperties = new Properties(defaultProperties);
             InputStream stream = WafProperties.class.getClassLoader().getResourceAsStream(WAF_PROPERTIES_FILE_NAME);
@@ -103,6 +108,14 @@ public class WafProperties {
 
     public static boolean isEhcacheCacheSupport() {
         return ehCacheSupport;
+    }
+
+    public static boolean isMySqlSupport() {
+        return mySqlSupport;
+    }
+
+    public static boolean isMongoSupport() {
+        return mongoSupport;
     }
 
     public static Properties getProperties() {

@@ -30,7 +30,7 @@ import java.util.Properties;
  */
 @EnableMongoAuditing
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-public class AbstractMongoConfigurerAdapter extends AbstractMongoConfiguration {
+public abstract class AbstractMongoConfigurerAdapter extends AbstractMongoConfiguration {
 
     public static final String MONGO_URL_PROPERTY = "url";
     public static final String MONGO_DB_NAME_PROPERTY = "dbName";
