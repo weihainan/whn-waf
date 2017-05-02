@@ -2,6 +2,7 @@ package com.whn.waf.common.config;
 
 import com.whn.waf.common.filter.ExceptionFilter;
 import com.whn.waf.common.filter.LogMDCFilter;
+import com.whn.waf.common.filter.WafCORSFilter;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -46,6 +47,7 @@ public abstract class AbstractWebApplicationInitialzer extends AbstractAnnotatio
 
         // 设置编码拦截器
         initCharacterEncodingFilter(servletContext);
+        initWafCROSFilter(servletContext);
         initLogMDCFilter(servletContext);
         initExceptionFilter(servletContext);
     }
@@ -65,6 +67,14 @@ public abstract class AbstractWebApplicationInitialzer extends AbstractAnnotatio
         // characterEncodingFilter.setForceEncoding(true);
         characterEncodingFilter.setEncoding("UTF-8");
         addFilter(servletContext, "characterEncodingFilter", characterEncodingFilter);
+    }
+
+    /**
+     * 跨域处理LogMDCFilter
+     */
+    protected void initWafCROSFilter(ServletContext servletContext) {
+        WafCORSFilter wafCORSFilter = new WafCORSFilter();
+        addFilter(servletContext, "wafCORSFilter", wafCORSFilter);
     }
 
     /**

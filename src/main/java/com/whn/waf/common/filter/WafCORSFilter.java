@@ -1,10 +1,12 @@
 package com.whn.waf.common.filter;
 
 import com.whn.waf.common.context.WafProperties;
+import org.springframework.web.filter.OncePerRequestFilter;
 
-import javax.servlet.*;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -14,7 +16,7 @@ import java.util.Properties;
  * @author weihainan.
  * @since 0.1 created on 2017/4/19.
  */
-public class CORSFilter {
+public class WafCORSFilter extends OncePerRequestFilter {
 
 
     public static final String WAF_CORS_ALLOW_ORIGIN = "waf.cors.allow.origin";
@@ -31,8 +33,8 @@ public class CORSFilter {
     }
 
 
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-        HttpServletResponse response = (HttpServletResponse) res;
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         // 设定CORS的初始化参数
         // cors.allowed.origins *:Any origin is allowed to access the resource
         response.addHeader("Access-Control-Allow-Origin", WafProperties.getProperty(WAF_CORS_ALLOW_ORIGIN));
@@ -46,26 +48,6 @@ public class CORSFilter {
         // cors.preflight.maxage Access-Control-Max-Age The amount of seconds,
         // browser is allowed to cache the result of the pre-flight request
         response.addHeader("Access-Control-Max-Age", WafProperties.getProperty(WAF_CORS_MAX_AGE));
-        chain.doFilter(req, res);
-    }
-
-    public void init(FilterConfig filterConfig) {
-    }
-
-    public void destroy() {
-    }
-
-    public static String getBodyString(BufferedReader br) {
-        String inputLine;
-        String str = "";
-        try {
-            while ((inputLine = br.readLine()) != null) {
-                str += inputLine;
-            }
-            br.close();
-        } catch (IOException e) {
-            System.out.println("IOException: " + e);
-        }
-        return str;
+        filterChain.doFilter(request, response);
     }
 }
