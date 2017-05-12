@@ -2,6 +2,7 @@ package com.whn.waf.common.utils;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
+import org.springframework.util.CollectionUtils;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,6 +10,7 @@ import java.util.List;
 
 /**
  * 字符串列表按照与某一个字符串的相似度降序排列
+ *
  * @author weihainan.
  * @since 0.1 created on 2017/5/11.
  */
@@ -68,25 +70,27 @@ public class SimilarityUtil {
 
 
     public static List<String> sortBySimilar(String key, List<String> list) {
+        if (CollectionUtils.isEmpty(list)) {
+            return Lists.newArrayList();
+        }
         List<Comp> comps = Lists.newArrayList();
         for (String str : list) {
             float ratio = getSimilarityRatio(str, key);
             comps.add(new Comp(ratio, str));
         }
-
         Collections.sort(comps, new Comparator<Comp>() {
             public int compare(Comp o1, Comp o2) {
                 return (o2.getRatio() < o1.getRatio()) ? -1 : ((o2.getRatio() == o1.getRatio()) ? 0 : 1);
             }
         });
         List<String> res = Lists.newArrayList();
-        for (Comp comp : comps){
+        for (Comp comp : comps) {
             res.add(comp.getStr());
         }
         return res;
     }
 
-    public static class Comp{
+    public static class Comp {
         private String str;
         private float ratio;
 
