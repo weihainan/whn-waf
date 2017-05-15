@@ -1,6 +1,9 @@
 package com.whn.test;
 
+import com.google.common.collect.Sets;
 import org.junit.Test;
+
+import java.util.Set;
 
 /**
  * @author weihainan.
@@ -47,4 +50,11 @@ public class MyTest {
 //    已用内存1253048320
 //    最大内存3797417984
 //    可用内存1230493968
+
+
+    @Test
+    public void testSet(){
+        Set set = Sets.newHashSet();
+        System.out.println(2 << 3);
+    }
 }

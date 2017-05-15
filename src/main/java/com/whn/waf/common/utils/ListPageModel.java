@@ -2,47 +2,39 @@ package com.whn.waf.common.utils;
 
 /**
  * 内存中分页
- *  ListPageModel listPageModel = new ListPageModel(data, size);
- *  List<String> attributesNames =  (List<String>)  listPageModel.getObjects(page + 1);
+ * ListPageModel listPageModel = new ListPageModel(data, size);
+ * List<String> attributesNames = listPageModel.getObjects(page + 1); // 注意此处页码从1开始  外部page=0 需要手动+1
+ *
  * @author weihainan.
  * @since 0.1 created on 2017/5/9.
  */
 
 import java.util.List;
 
-public class ListPageModel {
+public class ListPageModel<T> {
+
     private int page = 1; // 当前页
-
-    public int totalPages = 0; // 总页数
-
+    private int totalPages = 0; // 总页数
     private int pageRecorders;// 每页5条数据
-
     private int totalRows = 0; // 总数据数
-
     private int pageStartRow = 0;// 每页的起始数
-
     private int pageEndRow = 0; // 每页显示数据的终止数
-
     private boolean hasNextPage = false; // 是否有下一页
-
     private boolean hasPreviousPage = false; // 是否有前一页
 
-    private List list;
+    private List<T> list;
 
-    // private Iterator it;
-
-    public ListPageModel(List list, int pageRecorders) {
+    public ListPageModel(List<T> list, int pageRecorders) {
         init(list, pageRecorders);// 通过对象集，记录总数划分
     }
 
-    /** */
     /**
      * 初始化list，并告之该list每页的记录数
      *
      * @param list
      * @param pageRecorders
      */
-    public void init(List list, int pageRecorders) {
+    public void init(List<T> list, int pageRecorders) {
         this.pageRecorders = pageRecorders;
         this.list = list;
         totalRows = list.size();
@@ -85,35 +77,24 @@ public class ListPageModel {
     }
 
     public void description() {
-
         String description = "共有数据数:" + this.getTotalRows() +
-
                 "共有页数: " + this.getTotalPages() +
-
                 "当前页数为:" + this.getPage() +
-
                 " 是否有前一页: " + this.isHasPreviousPage() +
-
                 " 是否有下一页:" + this.isHasNextPage() +
-
                 " 开始行数:" + this.getPageStartRow() +
-
                 " 终止行数:" + this.getPageEndRow();
-
         System.out.println(description);
     }
 
     public List getNextPage() {
         page = page + 1;
-
         disposePage();
-
         System.out.println("用户凋用的是第" + page + "页");
         this.description();
         return getObjects(page);
     }
 
-    /** */
     /**
      * 处理分页
      */
@@ -154,14 +135,13 @@ public class ListPageModel {
         return getObjects(page);
     }
 
-    /** */
     /**
      * 获取第几页的内容
      *
      * @param page
      * @return
      */
-    public List getObjects(int page) {
+    public List<T> getObjects(int page) {
         if (page == 0)
             this.setPage(1);
         else
@@ -175,7 +155,7 @@ public class ListPageModel {
             pageStartRow = pageRecorders * (totalPages - 1);
         }
 
-        List objects = null;
+        List<T> objects = null;
         if (!list.isEmpty()) {
             objects = list.subList(pageStartRow, pageEndRow);
         }
