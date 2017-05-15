@@ -1,6 +1,5 @@
 package com.whn.waf.common.utils;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
 import org.springframework.util.CollectionUtils;
 
@@ -68,7 +67,9 @@ public class SimilarityUtil {
         return 1 - (float) compare(str, target) / Math.max(str.length(), target.length());
     }
 
-
+    /**
+     * 按照匹配度降序排列
+     */
     public static List<String> sortBySimilar(String key, List<String> list) {
         if (CollectionUtils.isEmpty(list)) {
             return Lists.newArrayList();
@@ -113,20 +114,6 @@ public class SimilarityUtil {
 
         public void setStr(String str) {
             this.str = str;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Comp comp = (Comp) o;
-            return Float.compare(comp.ratio, ratio) == 0 &&
-                    Objects.equal(str, comp.str);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hashCode(str, ratio);
         }
     }
 
