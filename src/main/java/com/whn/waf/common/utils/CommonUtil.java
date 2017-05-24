@@ -1,16 +1,38 @@
 package com.whn.waf.common.utils;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.CollectionUtils;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author weihainan.
  * @since 0.1 created on 2017/4/20.
  */
 public class CommonUtil {
+
+    public static <T> List<T> arrayToList(T [] arr){
+        if(arr == null || arr.length == 0){
+            return Lists.newArrayList();
+        }
+        return Lists.newArrayList(arr);
+    }
+
+    public static <T> Set<T> arrayToSet(T [] arr){
+        if(arr == null || arr.length == 0){
+            return Sets.newHashSet();
+        }
+        return Sets.newHashSet(arr);
+    }
+
+    public static  String[] listToArr(List<String> list){
+        if(CollectionUtils.isEmpty(list)){
+            return new String[0];
+        }
+       return list.toArray(new String[list.size()]);
+    }
 
     public static String uuid() {
         return UUID.randomUUID().toString();
