@@ -1,8 +1,12 @@
 package com.whn.waf.common.utils;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import com.whn.waf.common.support.WafJsonMapper;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
 
 import java.util.*;
@@ -13,25 +17,68 @@ import java.util.*;
  */
 public class CommonUtil {
 
-    public static <T> List<T> arrayToList(T [] arr){
-        if(arr == null || arr.length == 0){
+    private static final Logger logger = LoggerFactory.getLogger(CommonUtil.class);
+
+    /**
+     * 把map先转为json,再转为实体
+     */
+    public static <T> T getData(Object object, Class<T> type) {
+        if (object == null)
+            return null;
+        try {
+            return WafJsonMapper.parse(WafJsonMapper.toJson(object), type);
+        } catch (Exception e) {
+            logger.info("data deserialize error.", e);
+        }
+        return null;
+    }
+
+    /**
+     * 转为map 并且属性名字改为下划线
+     * @param object
+     * @return
+     */
+    public static Map toMap(Object object) {
+        try {// 转驼峰为下划线
+            return WafJsonMapper.parse(WafJsonMapper.toJson(object), HashMap.class);
+        } catch (Exception e) {
+            logger.info("data deserialize error.", e);
+        }
+        return Maps.newHashMap();
+    }
+
+    public static <T> List<T> arrayToList(T[] arr) {
+        if (arr == null || arr.length == 0) {
             return Lists.newArrayList();
         }
         return Lists.newArrayList(arr);
     }
 
-    public static <T> Set<T> arrayToSet(T [] arr){
-        if(arr == null || arr.length == 0){
+    public static <T> List<T> removeNull(List<T> list) {
+        if (CollectionUtils.isEmpty(list)) {
+            return list;
+        }
+        List<T> news = Lists.newArrayList();
+        for (T t : list) {
+            if (t != null) {
+                news.add(t);
+            }
+        }
+        return news;
+    }
+
+    public static <T> Set<T> arrayToSet(T[] arr) {
+        if (arr == null || arr.length == 0) {
             return Sets.newHashSet();
         }
         return Sets.newHashSet(arr);
     }
 
-    public static  String[] listToArr(List<String> list){
-        if(CollectionUtils.isEmpty(list)){
+    public static String[] listToArr(List<String> list) {
+        if (CollectionUtils.isEmpty(list)) {
             return new String[0];
         }
-       return list.toArray(new String[list.size()]);
+        return list.toArray(new String[list.size()]);
     }
 
     public static String uuid() {
