@@ -1,7 +1,11 @@
 package com.whn.waf.common.config;
 
+import com.whn.waf.common.base.support.ApplicationResolveInterceptor;
 import com.whn.waf.common.support.WafJsonMapper;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
@@ -21,6 +25,7 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.handler.HandlerExceptionResolverComposite;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
@@ -110,6 +115,12 @@ public abstract class AbstractWebMvcConfigurerAdpter extends WebMvcConfigurerAda
     @Bean
     public LocaleResolver localeResolver() {
         return new AcceptHeaderLocaleResolver();
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        super.addInterceptors(registry);
+        registry.addInterceptor(new ApplicationResolveInterceptor());
     }
 
 }

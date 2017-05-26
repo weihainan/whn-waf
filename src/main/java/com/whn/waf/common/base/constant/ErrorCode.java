@@ -9,6 +9,11 @@ import org.springframework.http.HttpStatus;
  */
 public enum ErrorCode implements IErrorCode {
 
+    APPLICATION_NAME_DUPLICATE(HttpStatus.BAD_REQUEST, "APPLICATION_NAME_DUPLICATE", "已存在相同的Application名称"),
+    APPLICATION_NAME_ONLY_INPUT_EN_NUM(HttpStatus.BAD_REQUEST, "APPLICATION_NAME_ONLY_INPUT_EN_NUM", "应用名称只支持小写字母、数字、下划线、横杠。并以字母开头"),
+    APPLICATION_NAME_IS_REQUIRED(HttpStatus.BAD_REQUEST, "APPLICATION_NAME_IS_REQUIRED", "请求路径中没有application信息"),
+    APPLICATION_NAME_IS_NOT_REGISTERED(HttpStatus.BAD_REQUEST, "APPLICATION_NAME_IS_NOT_REGISTERED", "application未接入"),
+
     //配置相关
     CONFIG_LOADING_FAIL(HttpStatus.INTERNAL_SERVER_ERROR, "CONFIG_LOADING_FAIL", "error.code.config.loading.fail"),
     CONFIG_MISSING(HttpStatus.INTERNAL_SERVER_ERROR, "CONFIG_MISSING", "error.code.config.missing"),
