@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.whn.waf.common.support.WafJsonMapper;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,13 @@ import java.util.*;
 public class CommonUtil {
 
     private static final Logger logger = LoggerFactory.getLogger(CommonUtil.class);
+
+    /**
+     * String id = DigestUtils.md5Hex(String.format("%s_%s_%s_%s", application, tenant, ownerId, auditorId))
+     */
+    public static String md5Hex(String formatStr, Object... objects) {
+        return DigestUtils.md5Hex(String.format(formatStr, objects));
+    }
 
     /**
      * 把map先转为json,再转为实体
@@ -35,6 +43,7 @@ public class CommonUtil {
 
     /**
      * 转为map 并且属性名字改为下划线
+     *
      * @param object
      * @return
      */
