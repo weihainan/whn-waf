@@ -11,8 +11,8 @@ import java.util.Map;
  * @since 0.1 created on 2017/6/16.
  */
 
-@Document(indexName = "#{T(com.nd.sdp.resource.core.ESProvider).getIndex()}",createIndex=false,
-        type = "#{T(com.nd.sdp.resource.core.ESProvider).getType()}")
+@Document(indexName = "#{T(com.whn.waf.common.es.supprot.ESProvider).getIndex()}",createIndex=false,
+        type = "#{T(com.whn.waf.common.es.supprot.ESProvider).getType()}")
 public class ESCommonDomain {
 
     @Id

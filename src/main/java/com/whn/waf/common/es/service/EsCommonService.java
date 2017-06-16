@@ -30,7 +30,7 @@ public class EsCommonService {
     @Autowired
     private ESCommonRepository eSCommonRepository;
 
-    public Page<ESCommonDomain> queryAll(BoolQueryBuilder queryBuilder, String index, String type, CustomListParam listParam) {
+    public Page<ESCommonDomain> query(BoolQueryBuilder queryBuilder, String index, String type, CustomListParam listParam) {
         try {
             return eSCommonRepository.queryAll(queryBuilder, index, type, listParam);
         } catch (IndexNotFoundException e) {
@@ -39,7 +39,7 @@ public class EsCommonService {
         return null;
     }
 
-    public Object queryForRest(String[] indexes, String[] types, HashMap<String, Object> query) {
+    public Object query(String[] indexes, String[] types, HashMap<String, Object> query) {
         return eSCommonRepository.queryForRest(indexes, types, query);
     }
 
@@ -61,9 +61,9 @@ public class EsCommonService {
 
     public ESCommonDomain saveCustom(ESCommonDomain esDomain) {
         ESCommonDomain _esDomain = null;
-        Map<String, Object> indexes = (HashMap<String, Object>) esDomain.getIndexes();
+        Map<String, Object> indexes = esDomain.getIndexes();
         if (indexes == null) {
-            indexes = new HashMap<String, Object>();
+            indexes = new HashMap<>();
         }
         if (StringUtils.isNotBlank(esDomain.getId())) {
             _esDomain = eSCommonRepository.findOne(esDomain.getId());
@@ -73,7 +73,7 @@ public class EsCommonService {
             esDomain.setIndexes(indexes);
             return save(esDomain);
         } else {
-            Map<String, Object> _indexes = (HashMap<String, Object>) _esDomain.getIndexes();
+            Map<String, Object> _indexes = _esDomain.getIndexes();
             _esDomain.setIndexes(indexes);
             indexes.put("create_time", _indexes.get("create_time"));
             indexes.put("application", _indexes.get("application"));
