@@ -22,7 +22,7 @@ public class WafJsonMapper {
 
     static {
         // 设置将驼峰命名法转换成下划线的方式输入输出
-        mapper.setPropertyNamingStrategy(PropertyNamingStrategy.CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES);
+        mapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
         //设置时区
         mapper.setTimeZone(TimeZone.getDefault());
         // 设置时间为 ISO-8601 日期
