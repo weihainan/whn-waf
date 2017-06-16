@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
 
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -39,6 +40,15 @@ public class CommonUtil {
             logger.info("data deserialize error.", e);
         }
         return null;
+    }
+
+    public static String toJson(Object object) {
+        try {
+            return WafJsonMapper.toJson(object);
+        } catch (IOException e) {
+            logger.info("data deserialize error.", e);
+        }
+        return "{}";
     }
 
     /**

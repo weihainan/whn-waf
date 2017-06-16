@@ -27,6 +27,10 @@ public enum ErrorCode implements IErrorCode {
     // 没有数据
     DATA_NOT_FOUND(HttpStatus.NOT_FOUND, "DATA_NOT_FOUND", "error.code.data.not.found"),
 
+    //ListParam相关
+    INVALID_QUERY(HttpStatus.BAD_REQUEST, "INVALID_QUERY", "error.code.invalid.query"),
+    FIELD_NOT_FOUND(HttpStatus.BAD_REQUEST, "FIELD_NOT_FOUND", "error.code.field.not.found"),
+
     //程序错误
     FAIL(HttpStatus.INTERNAL_SERVER_ERROR, "FAIL", "error.code.fail");
 
