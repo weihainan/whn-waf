@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
 
 import java.io.IOException;
@@ -17,6 +19,8 @@ import java.util.TimeZone;
  * @since 0.1 created on 2017/3/10.
  */
 public class WafJsonMapper {
+
+    private static final Logger logger = LoggerFactory.getLogger(WafJsonMapper.class);
 
     private static ObjectMapper mapper = new ObjectMapper();
 
@@ -57,8 +61,8 @@ public class WafJsonMapper {
         return mapper;
     }
 
-    public static void setMapper(ObjectMapper mapper) {
-        mapper = mapper;
+    public static void setMapper(ObjectMapper mapperValue) {
+        mapper = mapperValue;
     }
 
     public static <T> T parse(String json, Class<T> objectType) throws IOException {
@@ -84,7 +88,7 @@ public class WafJsonMapper {
         try {
             return mapper.writeValueAsString(obj);
         } catch (IOException e) {
-
+            logger.info("data deserialize error.", e);
         }
         return "{}";
     }
