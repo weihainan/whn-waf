@@ -25,11 +25,6 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-elasticsearch</artifactId>
-            <version>2.0.1.RELEASE</version>
-        </dependency>
 
         <!-- spring data mongo begin-->
         <dependency>
