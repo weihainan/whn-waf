@@ -18,7 +18,6 @@ public class ESCommonDomain {
     @Id
     private String id;
     private Object data;
-    private Long tenant;
     private Map<String, Object> indexes;
 
     @JsonIgnore
@@ -42,14 +41,6 @@ public class ESCommonDomain {
 
     public void setData(Object data) {
         this.data = data;
-    }
-
-    public Long getTenant() {
-        return this.tenant;
-    }
-
-    public void setTenant(Long tenant) {
-        this.tenant = tenant;
     }
 
     public Map<String, Object> getIndexes() {
