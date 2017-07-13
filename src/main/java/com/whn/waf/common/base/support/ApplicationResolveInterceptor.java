@@ -1,9 +1,7 @@
 package com.whn.waf.common.base.support;
 
 import com.whn.waf.common.base.constant.ErrorCode;
-import com.whn.waf.common.context.Context;
 import com.whn.waf.common.exception.WafBizException;
-import com.whn.waf.common.module.service.ApplicationService;
 import org.apache.log4j.MDC;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +10,6 @@ import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
@@ -25,8 +22,8 @@ public class ApplicationResolveInterceptor extends HandlerInterceptorAdapter {
 
     private static final Logger logger = LoggerFactory.getLogger(ApplicationResolveInterceptor.class);
 
-    @Resource
-    private ApplicationService applicationService = Context.getBean(ApplicationService.class);
+//    @Resource
+//    private ApplicationService applicationService = Context.getBean(ApplicationService.class);
 
 
     @Override
@@ -44,9 +41,9 @@ public class ApplicationResolveInterceptor extends HandlerInterceptorAdapter {
                     throw WafBizException.of(ErrorCode.APPLICATION_NAME_IS_REQUIRED);
                 }
                 String application = (String) value;
-                if (null == applicationService.findByName(application)) {
-                    throw WafBizException.of(ErrorCode.APPLICATION_NAME_IS_NOT_REGISTERED);
-                }
+//                if (null == applicationService.findByName(application)) {
+//                    throw WafBizException.of(ErrorCode.APPLICATION_NAME_IS_NOT_REGISTERED);
+//                }
                 logger.debug("AppNameProvider set application name = {}", application);
                 AppNameProvider.set(application);
                 MDC.put("application", application);
