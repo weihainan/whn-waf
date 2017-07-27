@@ -28,12 +28,15 @@ public class CommonUtil {
         return DigestUtils.md5Hex(String.format(formatStr, objects));
     }
 
+    public static String sha256Hex(String formatStr, Object... objects) {
+        return DigestUtils.sha256Hex(String.format(formatStr, objects));
+    }
+
     /**
      * 把map先转为json,再转为实体
      */
     public static <T> T getData(Object object, Class<T> type) {
-        if (object == null)
-            return null;
+        if (object == null) return null;
         try {
             return WafJsonMapper.parse(WafJsonMapper.toJson(object), type);
         } catch (Exception e) {
@@ -123,6 +126,22 @@ public class CommonUtil {
         return Double.valueOf(timeStr).longValue();
     }
 
+    public static String trim(Object object) {
+        String timeStr = String.valueOf(object).trim();
+        if (StringUtils.isBlank(timeStr) || "null".equals(timeStr)) {
+            return "";
+        }
+        return timeStr;
+    }
+
+    public static String trim(Object object, String defaultValueIfNull) {
+        String timeStr = String.valueOf(object).trim();
+        if (StringUtils.isBlank(timeStr) || "null".equals(timeStr)) {
+            return defaultValueIfNull;
+        }
+        return timeStr;
+    }
+
     public static boolean isBlank(String string) {
         return null == string || "".equals(string.trim());
     }
@@ -175,21 +194,7 @@ public class CommonUtil {
         return !isEmpty(map);
     }
 
-
     public static String makeQueryStringAllRegExp(String str) {
-        return str.replace("\\", "\\\\").replace("*", "\\*")
-                .replace("+", "\\+").replace("|", "\\|")
-                .replace("{", "\\{").replace("}", "\\}")
-                .replace("(", "\\(").replace(")", "\\)")
-                .replace("^", "\\^").replace("$", "\\$")
-                .replace("[", "\\[").replace("]", "\\]")
-                .replace("?", "\\?").replace(",", "\\,")
-                .replace(".", "\\.");
-    }
-
-    public static void main(String[] args) {
-        System.out.println(isBlank(""));
-        System.out.println(isBlank(null));
-        System.out.println(isBlank("  "));
+        return str.replace("\\", "\\\\").replace("*", "\\*").replace("+", "\\+").replace("|", "\\|").replace("{", "\\{").replace("}", "\\}").replace("(", "\\(").replace(")", "\\)").replace("^", "\\^").replace("$", "\\$").replace("[", "\\[").replace("]", "\\]").replace("?", "\\?").replace(",", "\\,").replace(".", "\\.");
     }
 }
