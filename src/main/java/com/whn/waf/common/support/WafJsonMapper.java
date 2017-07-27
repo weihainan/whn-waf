@@ -27,17 +27,28 @@ public class WafJsonMapper {
     static {
         // 设置将驼峰命名法转换成下划线的方式输入输出
         mapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
+
         //设置时区
         mapper.setTimeZone(TimeZone.getDefault());
         // 设置时间为 ISO-8601 日期
         mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+
         mapper.configure(SerializationFeature.WRITE_ENUMS_USING_TO_STRING, true);
+
         // map的空值不写出
         mapper.configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
+
         // 序列化BigDecimal时之间输出原始数字还是科学计数，默认false，即是否以toPlainString()科学计数方式来输出
         mapper.configure(JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN, false);
+
         //允许单引号
         //mapper.configure(com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
+
+        // 转义字符-异常情况 不如json字符串中有换行 导致转为对象时报出has to be escaped using backslash to be included in string value
+        //mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
+
+        //空值转换-异常情况
+        //mapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true) ;
 
         //设定是否使用Enum的toString函数来读取Enum, 为False时使用Enum的name()函数来读取Enum,
         mapper.configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true);
