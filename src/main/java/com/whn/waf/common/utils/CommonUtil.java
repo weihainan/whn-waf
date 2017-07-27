@@ -158,17 +158,14 @@ public class CommonUtil {
      * 获得字符串的描述信息 前30个字符
      */
     public static String getDescString(String str) {
-        if (isNotBlank(str) && str.trim().length() > 30) {
-            return str.substring(0, 30);
-        }
-        return str;
+        return getDescString(str, 30);
     }
 
     /**
-     * 获得字符串的描述信息 前n个字符
+     * 获得字符串的描述信息 前n个字符 默认10
      */
     public static String getDescString(String str, int length) {
-        if (length < 0) {
+        if (length <= 0) {
             length = 10;
         }
         if (isNotBlank(str) && str.trim().length() > length) {
