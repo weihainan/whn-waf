@@ -18,7 +18,7 @@ public class DateUtil {
     /**
      * 2个日期差几天
      */
-    public static int ntervalDays(Date date, Date otherDate) {
+    public static int intervalDays(Date date, Date otherDate) {
         long time = Math.abs(new LocalDate(date).toDate().getTime() - new LocalDate(otherDate).toDate().getTime());
         return (int) time / (24 * 60 * 60 * 1000);
     }
