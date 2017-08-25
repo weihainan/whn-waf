@@ -11,9 +11,9 @@ import org.apache.commons.lang3.RandomUtils;
 public class IdUtils {
 
     /*
-     * 项目起始纪元(此处取2016-01-01:00:00:00.000)
+     * 项目起始纪元(此处取2017-07-01:00:00:00.000)
      */
-    private static final long PROJECT_EPOCH = 1451577600L;
+    private static final long PROJECT_EPOCH = 1498838400L;
 
     /*
      * 集群间计数所占位数
