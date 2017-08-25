@@ -35,6 +35,7 @@ public class WafProperties {
 
     private static boolean mySqlSupport;
     private static boolean mongoSupport;
+    private static boolean myBatisSupport;
 
     static {
         defaultProperties = new Properties();
@@ -43,6 +44,7 @@ public class WafProperties {
             ehCacheSupport = existsPropertiesFile("ehcache.xml");
             mySqlSupport = existsPropertiesFile("dbconfig.properties");
             mongoSupport = existsPropertiesFile("mdb.properties");
+            myBatisSupport = existsPropertiesFile("druid.properties");
 
             wafProperties = new Properties(defaultProperties);
             InputStream stream = WafProperties.class.getClassLoader().getResourceAsStream(WAF_PROPERTIES_FILE_NAME);
@@ -116,6 +118,10 @@ public class WafProperties {
 
     public static boolean isMongoSupport() {
         return mongoSupport;
+    }
+
+    public static boolean isMyBatisSupport() {
+        return myBatisSupport;
     }
 
     public static Properties getProperties() {
