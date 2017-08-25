@@ -18,7 +18,7 @@ public class Context implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext;
 
-    private Context() {
+    public Context() {
     }
 
     @Override
