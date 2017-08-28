@@ -79,8 +79,8 @@ final public class DecimalUtil {
     /**
      * can give us a accurate result with the default 2 scale of v1 / v2
      *
-     * @param v1    in fact,can be any base data type
-     * @param v2    in fact,can be any base data type
+     * @param v1 in fact,can be any base data type
+     * @param v2 in fact,can be any base data type
      * @return v1/v2
      */
     public static BigDecimal div(double v1, double v2) {
