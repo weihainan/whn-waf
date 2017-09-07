@@ -1,6 +1,6 @@
 package com.whn.waf.common.base.repository;
 
-import com.whn.waf.common.base.domain.BizDomain;
+import com.whn.waf.common.base.domain.BaseModuleDomain;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.NoRepositoryBean;
@@ -14,7 +14,7 @@ import java.util.List;
  */
 
 @NoRepositoryBean
-public interface BizRepository<T extends BizDomain<I>, I extends Serializable> extends BaseRepository<T, I> {
+public interface BaseModuleRepository<T extends BaseModuleDomain<I>, I extends Serializable> extends BaseRepository<T, I> {
 
     T findByIdAndDeletedIsFalse(I id);
 

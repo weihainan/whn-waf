@@ -1,7 +1,7 @@
 package com.whn.waf.common.base.service;
 
-import com.whn.waf.common.base.domain.BizDomain;
-import com.whn.waf.common.base.repository.BizRepository;
+import com.whn.waf.common.base.domain.BaseModuleDomain;
+import com.whn.waf.common.base.repository.BaseModuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,11 +16,11 @@ import java.util.Map;
  *
  * @since 0.1 created on 2017/3/10.
  */
-public abstract class BizService<T extends BizDomain<I>, I extends Serializable>
+public abstract class BaseModuleService<T extends BaseModuleDomain<I>, I extends Serializable>
         extends BaseService<T, I> {
 
     @Autowired
-    private BizRepository<T, I> bizRepository;
+    private BaseModuleRepository<T, I> baseModuleRepository;
 
     @Override
     public T findOne(I id) {
@@ -33,12 +33,12 @@ public abstract class BizService<T extends BizDomain<I>, I extends Serializable>
 
     @Override
     public List<T> findAll() {
-        return bizRepository.findByDeletedIsFalse();
+        return baseModuleRepository.findByDeletedIsFalse();
     }
 
     @Override
     public Page<T> paging(Pageable pageable) {
-        return bizRepository.findByDeletedIsFalse(pageable);
+        return baseModuleRepository.findByDeletedIsFalse(pageable);
     }
 
     // 添加或内部更新
@@ -63,7 +63,7 @@ public abstract class BizService<T extends BizDomain<I>, I extends Serializable>
         beforeDelete(t);
         t.setDeleted(true);
         t.setUpdateTime(new Date());
-        bizRepository.save(t);
+        baseModuleRepository.save(t);
     }
 
     @Override

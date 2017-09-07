@@ -18,7 +18,7 @@ import java.util.Date;
  */
 @MappedSuperclass
 @EntityListeners({AuditingEntityListener.class})
-public abstract class BizDomain<I extends Serializable> extends BaseDomain<I> {
+public abstract class BaseModuleDomain<I extends Serializable> extends BaseDomain<I> {
 
     @LastModifiedDate
     @Column(name="update_time")
