@@ -45,6 +45,7 @@ public abstract class BaseModuleService<T extends BaseModuleDomain<I>, I extends
     @Override
     public T add(T t) {
         // 避免外部设置
+        //当id为外部指定是@CreateDate无法自动设置
         t.setCreateTime(new Date());
         t.setUpdateTime(null);
         t.setDeleted(false);
