@@ -1,6 +1,7 @@
 package com.whn.waf.common.utils;
 
 import com.google.common.base.Objects;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import java.net.NetworkInterface;
 import java.nio.ByteBuffer;
@@ -67,7 +68,7 @@ public class ObjectId implements Comparable<ObjectId>, java.io.Serializable {
      * @return the new id
      */
     public static String id() {
-        return new ObjectId().toHexString();
+        return get().toHexString();
     }
 
     /**
@@ -76,7 +77,13 @@ public class ObjectId implements Comparable<ObjectId>, java.io.Serializable {
      * @return the new id
      */
     public static String ID() {
-        return new ObjectId().toHexString().toUpperCase();
+        return id().toUpperCase();
+    }
+
+    public static String ID32() {
+        final int length = 8;
+        String randomStr = RandomStringUtils.randomAlphanumeric(length);
+        return new StringBuilder(id()).append(randomStr).toString().toUpperCase();
     }
 
     /**
@@ -273,5 +280,11 @@ public class ObjectId implements Comparable<ObjectId>, java.io.Serializable {
         System.out.println(ObjectId.id());
         System.out.println(ObjectId.ID());
         System.out.println(new ObjectId().toHexString().length());
+
+        System.out.println(ObjectId.ID32());
+        System.out.println(ObjectId.ID32());
+        System.out.println(ObjectId.ID32());
+        System.out.println(ObjectId.ID32().length());
+
     }
 }
