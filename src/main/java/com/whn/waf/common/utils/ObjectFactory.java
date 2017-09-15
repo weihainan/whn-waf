@@ -1,6 +1,7 @@
 package com.whn.waf.common.utils;
 
 import com.whn.waf.common.client.http.WafHttpClient;
+import com.whn.waf.common.thread.SerialThreadExecutor;
 
 /**
  * 工场类
@@ -24,5 +25,19 @@ public class ObjectFactory {
             }
         }
         return wafHttpClient;
+    }
+
+
+    public static SerialThreadExecutor serialThreadExecutor;
+
+    public static SerialThreadExecutor serialThreadExecutor(){
+        if (serialThreadExecutor == null) {
+            synchronized (ObjectFactory.class) {
+                if (serialThreadExecutor == null) {
+                    serialThreadExecutor = new SerialThreadExecutor();
+                }
+            }
+        }
+        return serialThreadExecutor;
     }
 }
