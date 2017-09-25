@@ -47,13 +47,13 @@ import java.util.List;
 @ComponentScan(basePackages = "com.whn", includeFilters = @ComponentScan.Filter({Controller.class}))
 public abstract class AbstractWebMvcConfigurerAdpter extends WebMvcConfigurerAdapter {
 
-//    private static final boolean jaxb2Present =
-//            ClassUtils.isPresent("javax.xml.bind.Binder", AbstractWebMvcConfigurerAdpter.class.getClassLoader());
-//
-//    private static final boolean jackson2Present =
-//            ClassUtils.isPresent("com.fasterxml.jackson.databind.ObjectMapper", AbstractWebMvcConfigurerAdpter.class.getClassLoader()) &&
-//                    ClassUtils.isPresent("com.fasterxml.jackson.core.JsonGenerator", AbstractWebMvcConfigurerAdpter.class.getClassLoader());
-//
+    private static final boolean jaxb2Present =
+            ClassUtils.isPresent("javax.xml.bind.Binder", AbstractWebMvcConfigurerAdpter.class.getClassLoader());
+
+    private static final boolean jackson2Present =
+            ClassUtils.isPresent("com.fasterxml.jackson.databind.ObjectMapper", AbstractWebMvcConfigurerAdpter.class.getClassLoader()) &&
+                    ClassUtils.isPresent("com.fasterxml.jackson.core.JsonGenerator", AbstractWebMvcConfigurerAdpter.class.getClassLoader());
+
 
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
@@ -78,22 +78,22 @@ public abstract class AbstractWebMvcConfigurerAdpter extends WebMvcConfigurerAda
         converters.add(new ResourceHttpMessageConverter());
         converters.add(new SourceHttpMessageConverter<>());
         converters.add(new AllEncompassingFormHttpMessageConverter());
-        converters.add(new FastJsonHttpMessageConverter());
+       // converters.add(new FastJsonHttpMessageConverter());
 
-//        if (jaxb2Present) {
-//            converters.add(new Jaxb2RootElementHttpMessageConverter());
-//        }
-//        if (jackson2Present) {
-//            MappingJackson2HttpMessageConverter convert = new MappingJackson2HttpMessageConverter();
-//            convert.setObjectMapper(WafJsonMapper.getMapper());
-//
-//            //重置媒体类型不带charset
-//            List<MediaType> supportedMediaTypes = new ArrayList<>();
-//            supportedMediaTypes.add(MediaType.APPLICATION_JSON);
-//            convert.setSupportedMediaTypes(supportedMediaTypes);
-//
-//            converters.add(convert);
-//        }
+        if (jaxb2Present) {
+            converters.add(new Jaxb2RootElementHttpMessageConverter());
+        }
+        if (jackson2Present) {
+            MappingJackson2HttpMessageConverter convert = new MappingJackson2HttpMessageConverter();
+            convert.setObjectMapper(WafJsonMapper.getMapper());
+
+            //重置媒体类型不带charset
+            List<MediaType> supportedMediaTypes = new ArrayList<>();
+            supportedMediaTypes.add(MediaType.APPLICATION_JSON);
+            convert.setSupportedMediaTypes(supportedMediaTypes);
+
+            converters.add(convert);
+        }
         customMediaTypeSupport(converters);
     }
 
