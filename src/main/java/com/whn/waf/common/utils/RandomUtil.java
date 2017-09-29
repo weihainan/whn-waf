@@ -1,6 +1,7 @@
 package com.whn.waf.common.utils;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * This class can helps us get some kinds of random number
@@ -26,7 +27,7 @@ public final class RandomUtil {
     public static int nextInt() {
         int i = 0;
         do {
-            i = new Random().nextInt();
+            i = ThreadLocalRandom.current().nextInt();
         } while (!(i > 0));
 
         return i;
@@ -41,7 +42,7 @@ public final class RandomUtil {
     public static long nextLong() {
         long l = 0L;
         do {
-            l = new Random().nextLong();
+            l = ThreadLocalRandom.current().nextLong();
         } while (l <= 0L);
         return l;
     }
@@ -55,7 +56,7 @@ public final class RandomUtil {
     public static float nextFloat() {
         float f = 0F;
         do {
-            f = new Random().nextFloat();
+            f = ThreadLocalRandom.current().nextFloat();
         } while (f <= 0F);
 
         return f;
@@ -70,7 +71,7 @@ public final class RandomUtil {
     public static double nextDouble() {
         double d = 0;
         do {
-            d = new Random().nextDouble();
+            d = ThreadLocalRandom.current().nextDouble();
         } while (d <= 0);
         return d;
     }
@@ -83,7 +84,7 @@ public final class RandomUtil {
      * @return a random int
      */
     public static int nextInt(int max) {
-        return new Random().nextInt(max);
+        return ThreadLocalRandom.current().nextInt(max);
     }
 
     /**
@@ -132,13 +133,15 @@ public final class RandomUtil {
         return result;
     }
 
+    private static final String BASE_CHARS_STRINGS = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-";
+
     public static String getRandomString(int length) { //length表示生成字符串的长度
-        String base = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
         Random random = new Random();
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < length; i++) {
-            int number = random.nextInt(base.length());
-            sb.append(base.charAt(number));
+            int number = random.nextInt(BASE_CHARS_STRINGS.length());
+            sb.append(BASE_CHARS_STRINGS.charAt(number));
         }
         return sb.toString();
     }
@@ -148,6 +151,7 @@ public final class RandomUtil {
         System.out.println(getRandomString(1));
         System.out.println(getRandomString(5));
         System.out.println(getRandomString(20));
+        System.out.println(getRandomString(13));
     }
 
 }
