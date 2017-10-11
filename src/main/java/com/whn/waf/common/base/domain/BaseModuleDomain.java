@@ -13,6 +13,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * 日期是Date类型
+ *
  * @author weihainan.
  * @since 0.1 created on 2017/3/10.
  */
