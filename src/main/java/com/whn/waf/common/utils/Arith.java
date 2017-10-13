@@ -103,6 +103,73 @@ public final class Arith {
         return b.divide(one, scale, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 
+
+    /**
+     * 提供精确的类型转换(Float)
+     * @param v 需要被转换的数字
+     * @return 返回转换结果
+     */
+    public static float convertsToFloat(double v){
+        BigDecimal b = new BigDecimal(v);
+        return b.floatValue();
+    }
+
+    /**
+     * 提供精确的类型转换(Int)不进行四舍五入
+     * @param v 需要被转换的数字
+     * @return 返回转换结果
+     */
+    public static int convertsToInt(double v){
+        BigDecimal b = new BigDecimal(v);
+        return b.intValue();
+    }
+
+    /**
+     * 提供精确的类型转换(Long)
+     * @param v 需要被转换的数字
+     * @return 返回转换结果
+     */
+    public static long convertsToLong(double v){
+        BigDecimal b = new BigDecimal(v);
+        return b.longValue();
+    }
+
+    /**
+     * 返回两个数中大的一个值
+     * @param v1 需要被对比的第一个数
+     * @param v2 需要被对比的第二个数
+     * @return 返回两个数中大的一个值
+     */
+    public static double returnMax(double v1,double v2){
+        BigDecimal b1 = new BigDecimal(v1);
+        BigDecimal b2 = new BigDecimal(v2);
+        return b1.max(b2).doubleValue();
+    }
+
+    /**
+     * 返回两个数中小的一个值
+     * @param v1 需要被对比的第一个数
+     * @param v2 需要被对比的第二个数
+     * @return 返回两个数中小的一个值
+     */
+    public static double returnMin(double v1,double v2){
+        BigDecimal b1 = new BigDecimal(v1);
+        BigDecimal b2 = new BigDecimal(v2);
+        return b1.min(b2).doubleValue();
+    }
+
+    /**
+     * 精确对比两个数字
+     * @param v1 需要被对比的第一个数
+     * @param v2 需要被对比的第二个数
+     * @return 如果两个数一样则返回0，如果第一个数比第二个数大则返回1，反之返回-1
+     */
+    public static int compareTo(double v1,double v2){
+        BigDecimal b1 = new BigDecimal(v1);
+        BigDecimal b2 = new BigDecimal(v2);
+        return b1.compareTo(b2);
+    }
+
     public static void main(String[] args) {
         System.out.println(round(1.3353333, 2));
     }
