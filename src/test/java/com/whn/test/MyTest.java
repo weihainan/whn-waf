@@ -64,6 +64,15 @@ public class MyTest {
         System.out.println(isEquals); // false
         System.out.println(3 * 0.1);  // 0.30000000000000004
         System.out.println(1 * 0.3);  // 0.3
+        System.out.println(1 * 0.1);  // 0.1
+        System.out.println(2 * 0.1);  // 0.2
+        System.out.println(3 * 0.1);  // 0.30000000000000004
+        System.out.println(4 * 0.1);  // 0.4
+        System.out.println(5 * 0.1);  // 0.5
+        System.out.println(6 * 0.1);  // 0.6000000000000001
+        System.out.println(7 * 0.1);  // 0.7000000000000001
+        System.out.println(8 * 0.1);  // 0.8
+        System.out.println(9 * 0.1);  // 0.9
     }
 
 }
