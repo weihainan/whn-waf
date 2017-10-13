@@ -57,4 +57,13 @@ public class MyTest {
         Set set = Sets.newHashSet();
         System.out.println(2 << 3);
     }
+
+    @Test
+    public void test1(){
+        boolean isEquals = (3 * 0.1 == 0.3); // false
+        System.out.println(isEquals); // false
+        System.out.println(3 * 0.1);  // 0.30000000000000004
+        System.out.println(1 * 0.3);  // 0.3
+    }
+
 }
