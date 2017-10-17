@@ -36,7 +36,9 @@ public class CommonUtil {
      * 把map先转为json,再转为实体
      */
     public static <T> T getData(Object object, Class<T> type) {
-        if (object == null) return null;
+        if (object == null) {
+            return null;
+        }
         try {
             return WafJsonMapper.parse(WafJsonMapper.toJson(object), type);
         } catch (Exception e) {
