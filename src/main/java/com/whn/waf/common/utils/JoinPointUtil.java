@@ -32,7 +32,7 @@ public final class JoinPointUtil {
         Object[] parameterValues = joinPoint.getArgs();
         List<Map<String, Object>> params = new ArrayList<>();
         for (int i = 0; i < parameterNames.length; i++) {
-           params.add(ParamBuilder.of(parameterNames[i],parameterValues[i]).build());
+            params.add(ParamBuilder.of(parameterNames[i], parameterValues[i]).build());
         }
         return params;
     }
@@ -102,9 +102,10 @@ public final class JoinPointUtil {
     public static RequestMethod getRequestMethod(JoinPoint joinPoint) {
         RequestMethod[] requestMethods = ((MethodSignature) joinPoint.getSignature()).getMethod()
                 .getAnnotation(RequestMapping.class).method();
-        if (requestMethods.length == 0) return RequestMethod.GET;
-        else return requestMethods[0];
-
+        if (requestMethods.length == 0) {
+            return RequestMethod.GET;
+        }
+        return requestMethods[0];
     }
 
     /**

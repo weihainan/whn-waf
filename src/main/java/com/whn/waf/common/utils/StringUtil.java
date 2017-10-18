@@ -76,8 +76,9 @@ final public class StringUtil {
             for (int a = 0, b = min.length() - i; b != min.length() + 1; a++, b++) {
 
                 String sub = min.substring(a, b);
-                if (max.contains(sub))
+                if (max.contains(sub)) {
                     return sub;
+                }
             }
         }
         return null;

@@ -40,8 +40,9 @@ public class WafResourceAccessException extends RuntimeException implements Remo
             sb.append("[");
             boolean first = true;
             for (Map.Entry<String, String> entry : remoteResponseEntity.getHeaders().toSingleValueMap().entrySet()) {
-                if (!first)
+                if (!first) {
                     sb.append(", ");
+                }
                 sb.append(entry.getKey());
                 sb.append(":");
                 sb.append(entry.getValue());

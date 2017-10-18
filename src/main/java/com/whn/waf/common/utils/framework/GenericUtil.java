@@ -35,8 +35,8 @@ public class GenericUtil {
     /**
      * 用该方法来代替 {@code new HashMap<K, V>(int)} 方式获得新的 {@code java.util.Map} 的实例对象。
      *
-     * @param <K> {@code Map} 中的键对象。
-     * @param <V> {@code Map} 中的值对象。
+     * @param <K>             {@code Map} 中的键对象。
+     * @param <V>             {@code Map} 中的值对象。
      * @param initialCapacity 初始容量。
      * @return 返回 {@code java.util.Map<K, V>} 关于 {@code java.util.HashMap<K, V>} 实现的新实例。
      */
@@ -50,7 +50,7 @@ public class GenericUtil {
      * @param <K> {@code Map} 中的键对象。
      * @param <V> {@code Map} 中的值对象。
      * @return 返回 {@code java.util.Map<K, V>} 关于
-     *         {@code java.util.concurrent.ConcurrentHashMap<K, V>} 实现的新实例。
+     * {@code java.util.concurrent.ConcurrentHashMap<K, V>} 实现的新实例。
      */
     public static <K, V> Map<K, V> getConcurrentMap() {
         return new ConcurrentHashMap<>();
@@ -60,11 +60,11 @@ public class GenericUtil {
      * 用该方法来代替 {@code new ConcurrentHashMap<K, V>(int)} 方式获得新的 {@code java.util.Map}
      * 的实例对象。
      *
-     * @param <K> {@code Map} 中的键对象。
-     * @param <V> {@code Map} 中的值对象。
+     * @param <K>             {@code Map} 中的键对象。
+     * @param <V>             {@code Map} 中的值对象。
      * @param initialCapacity 初始容量。
      * @return 返回 {@code java.util.Map<K, V>} 关于
-     *         {@code java.util.concurrent.ConcurrentHashMap<K, V>} 实现的新实例。
+     * {@code java.util.concurrent.ConcurrentHashMap<K, V>} 实现的新实例。
      */
     public static <K, V> Map<K, V> getConcurrentMap(int initialCapacity) {
         return new ConcurrentHashMap<>(initialCapacity);
@@ -76,7 +76,7 @@ public class GenericUtil {
      * @param <K> {@code Map} 中的键对象。
      * @param <V> {@code Map} 中的值对象。
      * @return 返回 {@code java.util.Map<K, V>} 关于 {@code java.util.LinkedHashMap<K, V>}
-     *         实现的新实例。
+     * 实现的新实例。
      */
     public static <K, V> Map<K, V> getLinkedMap() {
         return new LinkedHashMap<>();
@@ -85,11 +85,11 @@ public class GenericUtil {
     /**
      * 用该方法来代替 {@code new LinkedHashMap<K, V>(int)} 方式获得新的 {@code java.util.Map} 的实例对象。
      *
-     * @param <K> {@code Map} 中的键对象。
-     * @param <V> {@code Map} 中的值对象。
+     * @param <K>             {@code Map} 中的键对象。
+     * @param <V>             {@code Map} 中的值对象。
      * @param initialCapacity 初始容量。
      * @return 返回 {@code java.util.Map<K, V>} 关于 {@code java.util.LinkedHashMap<K, V>}
-     *         实现的新实例。
+     * 实现的新实例。
      */
     public static <K, V> Map<K, V> getLinkedMap(int initialCapacity) {
         return new LinkedHashMap<>(initialCapacity);
@@ -113,7 +113,7 @@ public class GenericUtil {
      * @param <K> {@code Map} 中的键对象。
      * @param <V> {@code Map} 中的值对象。
      * @return 返回 {@code java.util.concurrent.ConcurrentMap<K, V>} 关于
-     *         {@code java.util.concurrent.ConcurrentHashMap<K, V>} 实现的新实例。
+     * {@code java.util.concurrent.ConcurrentHashMap<K, V>} 实现的新实例。
      */
     public static <K, V> ConcurrentMap<K, V> getConcurrentHashMap() {
         return new ConcurrentHashMap<>();
@@ -123,11 +123,11 @@ public class GenericUtil {
      * 用该方法来代替 {@code new ConcurrentHashMap<K, V>(int)} 方式获得新的
      * {@code java.util.concurrent.ConcurrentHashMap} 的实例对象。
      *
-     * @param <K> {@code Map} 中的键对象。
-     * @param <V> {@code Map} 中的值对象。
+     * @param <K>             {@code Map} 中的键对象。
+     * @param <V>             {@code Map} 中的值对象。
      * @param initialCapacity 初始容量。
      * @return 返回 {@code java.util.concurrent.ConcurrentMap<K, V>} 关于
-     *         {@code java.util.concurrent.ConcurrentHashMap<K, V>} 实现的新实例。
+     * {@code java.util.concurrent.ConcurrentHashMap<K, V>} 实现的新实例。
      */
     public static <K, V> ConcurrentMap<K, V> getConcurrentHashMap(int initialCapacity) {
         return new ConcurrentHashMap<>(initialCapacity);
@@ -146,7 +146,7 @@ public class GenericUtil {
     /**
      * 用该方法来代替 {@code new ArrayList<T>(int)} 方式获得新的 {@code java.util.List} 的实例对象。
      *
-     * @param <T> {@code List<T>} 中保存的对象。
+     * @param <T>             {@code List<T>} 中保存的对象。
      * @param initialCapacity 列表的初始容量。
      * @return 返回 {@code java.util.List<T>} 关于 {@code java.util.ArrayList<T>} 实现的新实例。
      */
@@ -158,12 +158,13 @@ public class GenericUtil {
      * 用该方法来代替 {@code new ArrayList<T>()} 方式获得新的 {@code java.util.List} 的实例对象。
      *
      * @param <T> {@code List<T>} 中保存的对象。
-     * @param c 其中的元素将存放在新的 {@code list} 中的 {@code collection}。
+     * @param c   其中的元素将存放在新的 {@code list} 中的 {@code collection}。
      * @return 返回 {@code java.util.List<T>} 关于 {@code java.util.ArrayList<T>} 实现的新实例。
      */
     public static <T> List<T> getList(Collection<? extends T> c) {
-        if (!CollectionUtils.isEmpty(c))
+        if (!CollectionUtils.isEmpty(c)) {
             return new ArrayList<>(c);
+        }
         return new ArrayList<>();
     }
 
@@ -190,7 +191,7 @@ public class GenericUtil {
     /**
      * 用该方法来代替 {@code new HashSet<T>(int)} 方式获得新的 {@code java.util.Set} 的实例对象。
      *
-     * @param <T> {@code Set<T>} 中保存的对象。
+     * @param <T>             {@code Set<T>} 中保存的对象。
      * @param initialCapacity 列表的初始容量。
      * @return 返回 {@code java.util.Set<T>} 关于 {@code java.util.HashSet<T>} 实现的新实例。
      */
@@ -203,12 +204,13 @@ public class GenericUtil {
      * {@code java.util.Set} 的实例对象。
      *
      * @param <T> {@code Set} 中保存的对象。
-     * @param c 其中的元素将存放在新的 {@code set} 中的 {@code collection}。
+     * @param c   其中的元素将存放在新的 {@code set} 中的 {@code collection}。
      * @return 返回 {@code java.util.Set<T>} 关于 {@code java.util.HashSet<T>} 实现的新实例。
      */
     public static <T> Set<T> getHashSet(Collection<? extends T> c) {
-        if (ObjectUtils.isEmpty(c))
+        if (ObjectUtils.isEmpty(c)) {
             return new HashSet<>();
+        }
         return new HashSet<>(c);
     }
 
@@ -227,12 +229,13 @@ public class GenericUtil {
      * {@code java.util.Set} 的实例对象。
      *
      * @param <T> {@code Set} 中保存的对象。
-     * @param c 其中的元素将存放在新的 {@code set} 中的 {@code collection}。
+     * @param c   其中的元素将存放在新的 {@code set} 中的 {@code collection}。
      * @return 返回 {@code java.util.Set<T>} 关于 {@code java.util.TreeSet<T>} 实现的新实例。
      */
     public static <T> Set<T> getTreeSet(Collection<? extends T> c) {
-        if (ObjectUtils.isEmpty(c))
+        if (ObjectUtils.isEmpty(c)) {
             return new TreeSet<>();
+        }
         return new TreeSet<>(c);
     }
 
@@ -256,7 +259,7 @@ public class GenericUtil {
      * </li>
      * </ul>
      *
-     * @param <T> {@code Set} 中保存的对象。
+     * @param <T>  {@code Set} 中保存的对象。
      * @param setA 第一个 {@code Set}。
      * @param setB 第二个 {@code Set}。
      * @return 返回 {@code setA} 和 {@code setB} 的并集。
@@ -264,12 +267,15 @@ public class GenericUtil {
     public static <T> Set<T> unionHashSet(Set<T> setA, Set<T> setB) {
         boolean isEmptySetA = ObjectUtils.isEmpty(setA);
         boolean isEmptySetB = ObjectUtils.isEmpty(setB);
-        if (isEmptySetA && isEmptySetB)
+        if (isEmptySetA && isEmptySetB) {
             return getHashSet();
-        if (isEmptySetA && !isEmptySetB)
+        }
+        if (isEmptySetA && !isEmptySetB) {
             return setB;
-        if (!isEmptySetA && isEmptySetB)
+        }
+        if (!isEmptySetA && isEmptySetB) {
             return setA;
+        }
         Set<T> result = getHashSet(setA);
         result.addAll(setB);
         return result;
@@ -285,14 +291,15 @@ public class GenericUtil {
      * </li>
      * </ul>
      *
-     * @param <T> {@code Set} 中保存的对象。
+     * @param <T>  {@code Set} 中保存的对象。
      * @param setA 第一个 {@code Set}。
      * @param setB 第二个 {@code Set}。
      * @return 返回 {@code setA} 和 {@code setB} 的交集。
      */
     public static <T> Set<T> intersectHashSet(Set<T> setA, Set<T> setB) {
-        if (ObjectUtils.isEmpty(setA) || ObjectUtils.isEmpty(setB))
+        if (ObjectUtils.isEmpty(setA) || ObjectUtils.isEmpty(setB)) {
             return null;
+        }
         Set<T> result = getHashSet(setA);
         result.retainAll(setB);
         return result;
@@ -308,16 +315,18 @@ public class GenericUtil {
      * 的不对称差集。</li>
      * </ul>
      *
-     * @param <T> {@code Set} 中保存的对象。
+     * @param <T>  {@code Set} 中保存的对象。
      * @param setA 第一个 {@code Set}。
      * @param setB 第二个 {@code Set}。
      * @return 返回 {@code setA} 和 {@code setB} 的不对称差集。
      */
     public static <T> Set<T> differenceHashSet(Set<T> setA, Set<T> setB) {
-        if (ObjectUtils.isEmpty(setA))
+        if (ObjectUtils.isEmpty(setA)) {
             return null;
-        if (ObjectUtils.isEmpty(setB))
+        }
+        if (ObjectUtils.isEmpty(setB)) {
             return setA;
+        }
         Set<T> result = getHashSet(setA);
         result.removeAll(setB);
         return result;
@@ -326,7 +335,7 @@ public class GenericUtil {
     /**
      * 取两个有相同元素类型的 {@code java.util.Set} 的补集。
      *
-     * @param <T> {@code Set} 中保存的对象。
+     * @param <T>  {@code Set} 中保存的对象。
      * @param setA 第一个 {@code Set}。
      * @param setB 第二个 {@code Set}。
      * @return 返回 {@code setA} 和 {@code setB} 的补集。

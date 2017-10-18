@@ -14,6 +14,7 @@ import java.util.List;
  */
 
 @NoRepositoryBean
-public interface BaseRepository<T extends BaseDomain<I>, I extends Serializable> extends PagingAndSortingRepository<T, I>{
+public interface BaseRepository<T extends BaseDomain<I>, I extends Serializable> extends PagingAndSortingRepository<T, I> {
+    @Override
     List<T> findAll();
 }

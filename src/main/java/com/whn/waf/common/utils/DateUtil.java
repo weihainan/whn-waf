@@ -4,6 +4,7 @@ package com.whn.waf.common.utils;
  * @author Administrator.
  * @since 0.1 created on 2017/3/19 0019.
  */
+
 import org.joda.time.LocalDate;
 
 import java.text.DateFormat;
@@ -116,8 +117,12 @@ public class DateUtil {
     }
 
     public static String formatDateTime(Date date, String format) {
-        if (date == null) return "";
-        if (format == null) return date.toString();
+        if (date == null) {
+            return "";
+        }
+        if (format == null) {
+            return date.toString();
+        }
         DateFormat df = new SimpleDateFormat(format);
         return df.format(date);
     }

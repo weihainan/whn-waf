@@ -32,7 +32,9 @@ public class JsonStringFormatUtil {
      * 格式化
      */
     public static String formatJson(String jsonStr) {
-        if (null == jsonStr || "".equals(jsonStr)) return "";
+        if (null == jsonStr || "".equals(jsonStr)) {
+            return "";
+        }
         StringBuilder sb = new StringBuilder();
         char last = '\0';
         char current = '\0';

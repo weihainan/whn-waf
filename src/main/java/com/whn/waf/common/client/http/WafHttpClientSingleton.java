@@ -27,12 +27,16 @@ public final class WafHttpClientSingleton {
         return httpClient;
     }
 
-    //TODO:每次调用都会创建一个新的HttpClient和本类的语义不符
+    /**
+     * TODO:每次调用都会创建一个新的HttpClient和本类的语义不符
+     */
     public HttpClient getHttpClient(int retryCount) {
         return wafHttpClientBuilder.build(retryCount);
     }
 
-    //TODO:每次调用都会创建一个新的HttpClient和本类的语义不符
+    /**
+     * TODO:每次调用都会创建一个新的HttpClient和本类的语义不符
+     */
     public HttpClient getHttpClient(int retryCount, Collection<Class<? extends IOException>> clazzes) {
         return wafHttpClientBuilder.build(retryCount, clazzes);
     }

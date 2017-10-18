@@ -62,10 +62,11 @@ public abstract class AbstractRestErrorHandler {
 
     protected String appendStackTrace(String detail, Throwable throwable) {
         if (throwable != null) {
-            if (detail != null)
+            if (detail != null) {
                 detail += "\r\n";
-            else
+            } else {
                 detail = "";
+            }
             detail += "Stack trace:\r\n" + getStackTrace(throwable);
         }
         return detail;

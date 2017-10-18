@@ -77,6 +77,7 @@ public class ResponseErrorMessage extends ErrorMessage implements Cloneable {
         return builder.toString();
     }
 
+    @Override
     public ResponseErrorMessage clone() {
         try {
             return (ResponseErrorMessage) super.clone();

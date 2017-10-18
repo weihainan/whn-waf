@@ -33,10 +33,12 @@ public class WafHttpComponentsClientHttpRequestFactory extends HttpComponentsCli
     @Override
     protected HttpContext createHttpContext(HttpMethod httpMethod, URI uri) {
         HttpContext context = HttpClientContext.create();
-        if (requestInterceptor != null)
+        if (requestInterceptor != null) {
             context.setAttribute(REQUEST_INTERCEPTOR, this.requestInterceptor);
-        if (responseInterceptor != null)
+        }
+        if (responseInterceptor != null) {
             context.setAttribute(RESPONSE_INTERCEPTOR, this.responseInterceptor);
+        }
         return context;
     }
 }

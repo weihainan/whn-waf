@@ -70,7 +70,9 @@ final public class DecimalUtil {
      */
     public static BigDecimal div(double v1, double v2, int scale) {
 
-        if (scale < 0) throw new RuntimeException("scale must > 0");
+        if (scale < 0) {
+            throw new RuntimeException("scale must > 0");
+        }
 
         return new BigDecimal(String.valueOf(v1))
                 .divide(new BigDecimal(String.valueOf(v2)), scale, BigDecimal.ROUND_HALF_UP);
@@ -107,7 +109,9 @@ final public class DecimalUtil {
      * @return
      */
     public static BigDecimal round(double v, int scale) {
-        if (scale < 0) throw new RuntimeException("sacle can not < 0");
+        if (scale < 0) {
+            throw new RuntimeException("sacle can not < 0");
+        }
         return new BigDecimal(String.valueOf(v))
                 .divide(new BigDecimal("1"), scale, BigDecimal.ROUND_HALF_UP);
     }

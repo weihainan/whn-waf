@@ -18,8 +18,9 @@ public class JavaBeanUtil {
      * @return
      */
     public static String toUnderlineString(String inputString) {
-        if (inputString == null)
+        if (inputString == null) {
             return null;
+        }
         StringBuilder sb = new StringBuilder();
         boolean upperCase = false;
         for (int i = 0; i < inputString.length(); i++) {
@@ -33,8 +34,9 @@ public class JavaBeanUtil {
 
             if ((i >= 0) && Character.isUpperCase(c)) {
                 if (!upperCase || !nextUpperCase) {
-                    if (i > 0)
+                    if (i > 0) {
                         sb.append(SEPARATOR);
+                    }
                 }
                 upperCase = true;
             } else {
@@ -51,8 +53,7 @@ public class JavaBeanUtil {
      * 将驼峰字段转成属性字符串<br>
      * (例:branch_no -> branchNo )<br>
      *
-     * @param inputString
-     *            输入字符串
+     * @param inputString 输入字符串
      * @return
      */
     public static String toCamelCaseString(String inputString) {
@@ -63,15 +64,14 @@ public class JavaBeanUtil {
      * 将驼峰字段转成属性字符串<br>
      * (例:branch_no -> branchNo )<br>
      *
-     * @param inputString
-     *            输入字符串
-     * @param firstCharacterUppercase
-     *            是否首字母大写
+     * @param inputString             输入字符串
+     * @param firstCharacterUppercase 是否首字母大写
      * @return
      */
     public static String toCamelCaseString(String inputString, boolean firstCharacterUppercase) {
-        if (inputString == null)
+        if (inputString == null) {
             return null;
+        }
         StringBuilder sb = new StringBuilder();
         boolean nextUpperCase = false;
         for (int i = 0; i < inputString.length(); i++) {
@@ -112,8 +112,7 @@ public class JavaBeanUtil {
     /**
      * 得到标准字段名称
      *
-     * @param inputString
-     *            输入字符串
+     * @param inputString 输入字符串
      * @return
      */
     public static String getValidPropertyName(String inputString) {

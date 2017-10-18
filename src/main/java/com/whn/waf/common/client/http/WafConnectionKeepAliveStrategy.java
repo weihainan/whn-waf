@@ -38,7 +38,7 @@ public class WafConnectionKeepAliveStrategy implements ConnectionKeepAliveStrate
             HeaderElement he = it.nextElement();
             String param = he.getName();
             String value = he.getValue();
-            if (value != null && param.equalsIgnoreCase("timeout")) {
+            if (value != null && "timeout".equalsIgnoreCase(param)) {
                 try {
                     return Long.parseLong(value) * 1000;
                 } catch (NumberFormatException ignore) {

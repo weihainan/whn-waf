@@ -16,10 +16,8 @@ public class MapUtil {
     /**
      * 将Map转换为Object
      *
-     * @param clazz
-     *            目标对象的类
-     * @param map
-     *            待转换Map
+     * @param clazz 目标对象的类
+     * @param map   待转换Map
      * @return
      * @throws InstantiationException
      * @throws IllegalAccessException
@@ -33,12 +31,9 @@ public class MapUtil {
     /**
      * 将Map转换为Object
      *
-     * @param clazz
-     *            目标对象的类
-     * @param map
-     *            待转换Map
-     * @param toCamelCase
-     *            是否去掉下划线
+     * @param clazz       目标对象的类
+     * @param map         待转换Map
+     * @param toCamelCase 是否去掉下划线
      * @return
      * @throws InstantiationException
      * @throws IllegalAccessException
@@ -52,10 +47,8 @@ public class MapUtil {
     /**
      * 将Map转换为Object
      *
-     * @param object
-     *            目标对象
-     * @param map
-     *            待转换Map
+     * @param object 目标对象
+     * @param map    待转换Map
      * @return
      * @throws InstantiationException
      * @throws IllegalAccessException
@@ -66,8 +59,9 @@ public class MapUtil {
     }
 
     public static <T, V> T toObject(T object, Map<String, V> map, boolean toCamelCase) throws InstantiationException, IllegalAccessException, InvocationTargetException {
-        if (toCamelCase)
+        if (toCamelCase) {
             map = toCamelCaseMap(map);
+        }
         BeanUtils.populate(object, map);
         return object;
     }
@@ -75,8 +69,7 @@ public class MapUtil {
     /**
      * 对象转Map
      *
-     * @param object
-     *            目标对象
+     * @param object 目标对象
      * @return
      * @throws IllegalAccessException
      * @throws InvocationTargetException
@@ -90,8 +83,7 @@ public class MapUtil {
     /**
      * 转换为Collection<Map<K, V>>
      *
-     * @param collection
-     *            待转换对象集合
+     * @param collection 待转换对象集合
      * @return 转换后的Collection<Map<K, V>>
      * @throws IllegalAccessException
      * @throws InvocationTargetException
@@ -111,8 +103,7 @@ public class MapUtil {
     /**
      * 转换为Collection,同时为字段做驼峰转换<Map<K, V>>
      *
-     * @param collection
-     *            待转换对象集合
+     * @param collection 待转换对象集合
      * @return 转换后的Collection<Map<K, V>>
      * @throws IllegalAccessException
      * @throws InvocationTargetException
@@ -141,8 +132,7 @@ public class MapUtil {
      * 将Map的Keys去下划线<br>
      * (例:branch_no -> branchNo )<br>
      *
-     * @param map
-     *            待转换Map
+     * @param map 待转换Map
      * @return
      */
     public static <V> Map<String, V> toCamelCaseMap(Map<String, V> map) {
@@ -157,8 +147,7 @@ public class MapUtil {
      * 将Map的Keys转译成下划线格式的<br>
      * (例:branchNo -> branch_no)<br>
      *
-     * @param map
-     *            待转换Map
+     * @param map 待转换Map
      * @return
      */
     public static <V> Map<String, V> toUnderlineStringMap(Map<String, V> map) {

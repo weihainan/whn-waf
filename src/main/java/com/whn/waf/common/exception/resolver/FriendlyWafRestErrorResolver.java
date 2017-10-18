@@ -25,8 +25,9 @@ public class FriendlyWafRestErrorResolver extends WafRestErrorResolver {
     protected ResponseEntity<ResponseErrorMessage> process(Throwable throwable, HttpServletRequest request) {
         ResponseEntity<ResponseErrorMessage> responseEntity = super.process(throwable, request);
         for (FriendlyExceptionMessageConverter converter : converters) {
-            if (converter.convert(responseEntity))
+            if (converter.convert(responseEntity)) {
                 break;
+            }
         }
         return responseEntity;
     }

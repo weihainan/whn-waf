@@ -68,10 +68,12 @@ public class WafRestTemplateBuilder {
                                  HttpResponseInterceptor responseInterceptor,
                                  int connectTimeout,
                                  int socketTimeout) {
-        if (connectTimeout < 0)
+        if (connectTimeout < 0) {
             throw new IllegalArgumentException("Connect timeout value is illegal, must be >=0");
-        if (socketTimeout < 0)
+        }
+        if (socketTimeout < 0) {
             throw new IllegalArgumentException("Socket timeout value is illegal, must be >=0");
+        }
 
         this.httpClient = httpClient;
         requestFactory = buildRequestFactory(httpClient, requestInterceptor, responseInterceptor, connectTimeout, socketTimeout);

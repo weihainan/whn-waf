@@ -40,21 +40,22 @@ public class WafRestErrorResolver implements WafErrorResolver, Ordered {
 
         for (Class clazz = throwableClass; clazz != Throwable.class; clazz = clazz.getSuperclass()) {
             AbstractRestErrorHandler handler = handlerMap.get(clazz);
-            if (handler != null)
+            if (handler != null) {
                 return handler;
+            }
         }
         throw new RuntimeException("无法找到异常类型为 " + throwableClass + " 的异常处理器。");
     }
 
     @Override
     public boolean process(Throwable throwable, HttpServletRequest request, HttpServletResponse response) {
-        if(throwable!=null){
+        if (throwable != null) {
             logger.error(throwable.getMessage(), throwable);
         }
         return this.resolver(throwable, request, response);
     }
 
-    public boolean resolver(Throwable throwable, HttpServletRequest request, HttpServletResponse response){
+    public boolean resolver(Throwable throwable, HttpServletRequest request, HttpServletResponse response) {
         Assert.notNull(throwable);
         Assert.notNull(request);
         Assert.notNull(response);

@@ -4,6 +4,7 @@ package com.whn.waf.common.config.mybatis.interceptor;
  * @author weihainan.
  * @since 0.1 created on 2017/7/20.
  */
+
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -30,10 +31,9 @@ import java.util.Properties;
 })
 public class PerformanceInterceptor implements Interceptor {
 
-    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private final static Logger log = Logger.getLogger(PerformanceInterceptor.class);
 
-
+    @Override
     public Object intercept(Invocation invocation) throws Throwable {
         MappedStatement mappedStatement = (MappedStatement) invocation.getArgs()[0];
         Object parameterObject = null;
@@ -57,6 +57,7 @@ public class PerformanceInterceptor implements Interceptor {
         return result;
     }
 
+    @Override
     public Object plugin(Object target) {
         if (target instanceof Executor) {
             return Plugin.wrap(target, this);
@@ -64,6 +65,7 @@ public class PerformanceInterceptor implements Interceptor {
         return target;
     }
 
+    @Override
     public void setProperties(Properties properties) {
     }
 
@@ -96,11 +98,12 @@ public class PerformanceInterceptor implements Interceptor {
 
     private String replacePlaceholder(String sql, Object propertyValue) {
         String result;
+        DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         if (propertyValue != null) {
             if (propertyValue instanceof String) {
                 result = "'" + propertyValue + "'";
             } else if (propertyValue instanceof Date) {
-                result = "'" + DATE_FORMAT.format(propertyValue) + "'";
+                result = "'" + simpleDateFormat.format(propertyValue) + "'";
             } else {
                 result = propertyValue.toString();
             }

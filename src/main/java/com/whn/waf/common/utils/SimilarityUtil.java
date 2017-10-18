@@ -80,6 +80,7 @@ public class SimilarityUtil {
             comps.add(new Comp(ratio, str));
         }
         Collections.sort(comps, new Comparator<Comp>() {
+            @Override
             public int compare(Comp o1, Comp o2) {
                 return (o2.getRatio() < o1.getRatio()) ? -1 : ((o2.getRatio() == o1.getRatio()) ? 0 : 1);
             }

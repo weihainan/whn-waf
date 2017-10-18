@@ -86,10 +86,12 @@ public class WafHttpClient {
      * @param socketTimeout  socket读写数据超时时间（毫秒），默认 10000 ms
      */
     public WafHttpClient(int connectTimeout, int socketTimeout) {
-        if (connectTimeout < 0)
+        if (connectTimeout < 0) {
             throw new IllegalArgumentException("Connect timeout value is illegal, must be >=0");
-        if (socketTimeout < 0)
+        }
+        if (socketTimeout < 0) {
             throw new IllegalArgumentException("Socket timeout value is illegal, must be >=0");
+        }
         WafRestTemplateBuilder wafRestTemplateBuilder = new WafRestTemplateBuilder();
         restTemplate = wafRestTemplateBuilder.build(connectTimeout, socketTimeout);
     }
@@ -116,9 +118,9 @@ public class WafHttpClient {
      */
     public WafHttpClient(int connectTimeout, int socketTimeout, int retryCount, Collection<Class<? extends IOException>> clazzes) {
         if (connectTimeout < 0)
-            throw new IllegalArgumentException("Connect timeout value is illegal, must be >=0");
+        {  throw new IllegalArgumentException("Connect timeout value is illegal, must be >=0");}
         if (socketTimeout < 0)
-            throw new IllegalArgumentException("Socket timeout value is illegal, must be >=0");
+        {throw new IllegalArgumentException("Socket timeout value is illegal, must be >=0");}
         WafRestTemplateBuilder wafRestTemplateBuilder = new WafRestTemplateBuilder();
         restTemplate = wafRestTemplateBuilder.build(connectTimeout, socketTimeout, retryCount, clazzes);
     }

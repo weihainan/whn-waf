@@ -45,14 +45,17 @@ public enum ErrorCode implements IErrorCode {
         this.message = message;
     }
 
+    @Override
     public HttpStatus getHttpStatus() {
         return this.httpStatus;
     }
 
+    @Override
     public String getCode() {
         return PREFIX + this.code;
     }
 
+    @Override
     public String getMessage() {
         return this.message;
     }

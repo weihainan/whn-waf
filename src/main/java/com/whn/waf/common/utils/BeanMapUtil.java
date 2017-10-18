@@ -61,11 +61,11 @@ public class BeanMapUtil {
 
     /**
      * 将Bean对象转换成Map对象
+     * Bean --> Map 1: 利用Introspector和PropertyDescriptor 将Bean --> Map
      *
      * @param bean 待转的Bean对象
      * @return 转换后的Map对象
      */
-    // Bean --> Map 1: 利用Introspector和PropertyDescriptor 将Bean --> Map
     public static Map<String, Object> convertBeanToMap(Object bean) {
 
         if (bean == null) {
@@ -79,7 +79,7 @@ public class BeanMapUtil {
 
             for (PropertyDescriptor property : propertyDescriptors) {
                 String key = property.getName();
-                if (!key.equals("class")) {
+                if (!"class".equals(key)) {
                     // 得到property对应的getter方法
                     Method getter = property.getReadMethod();
                     Object value = getter.invoke(bean);

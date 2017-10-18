@@ -40,9 +40,9 @@ public class ExceptionFilter extends OncePerRequestFilter {
      */
     public WafErrorResolver wafErrorResolver() {
         WafRestErrorResolver resolver;
-        if (Boolean.parseBoolean(WafProperties.getProperty(WAF_EXCEPTION_FRIENDLY_DISABLED,"true"))) {
+        if (Boolean.parseBoolean(WafProperties.getProperty(WAF_EXCEPTION_FRIENDLY_DISABLED, "true"))) {
             resolver = new WafRestErrorResolver();
-        }else {
+        } else {
             resolver = new FriendlyWafRestErrorResolver();
         }
 
@@ -74,13 +74,14 @@ public class ExceptionFilter extends OncePerRequestFilter {
         try {
             filterChain.doFilter(request, response);
         } catch (Exception ex) {
-            if (ex.getCause() != null && ex.getCause() instanceof Exception){
+            if (ex.getCause() != null && ex.getCause() instanceof Exception) {
                 ex = (Exception) ex.getCause();
             }
             for (WafErrorResolver wafErrorResolver : wafErrorResolvers) {
                 try {
-                    if (wafErrorResolver.process(ex, request, response))
+                    if (wafErrorResolver.process(ex, request, response)) {
                         break;
+                    }
                 } catch (Exception e) {
                     ex = e;
                 }

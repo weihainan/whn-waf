@@ -142,12 +142,14 @@ public class ListPageModel<T> {
      * @return
      */
     public List<T> getObjects(int page) {
-        if (page == 0)
+        if (page == 0) {
             this.setPage(1);
-        else
+        } else {
             this.setPage(page);
+        }
         this.disposePage();
-        if (page * pageRecorders < totalRows) {// 判断是否为最后一页
+        // 判断是否为最后一页
+        if (page * pageRecorders < totalRows) {
             pageEndRow = page * pageRecorders;
             pageStartRow = pageEndRow - pageRecorders;
         } else {
@@ -159,7 +161,6 @@ public class ListPageModel<T> {
         if (!list.isEmpty()) {
             objects = list.subList(pageStartRow, pageEndRow);
         }
-        //this.description();
         return objects;
     }
 

@@ -133,6 +133,7 @@ public class RedisCacheConfigurerAdapter extends AbstractCacheConfigurerAdapter 
      * @param expireTime 过期时间(单位秒)
      * @return CacheManager
      */
+    @Override
     protected CacheManager newCacheManager(Class type, String cacheName, long expireTime) {
         return getCacheManager(cacheName, new Jackson2JsonRedisSerializer(type), expireTime);
     }
@@ -145,6 +146,7 @@ public class RedisCacheConfigurerAdapter extends AbstractCacheConfigurerAdapter 
      * @param expireTime 过期时间(单位秒)
      * @return CacheManager
      */
+    @Override
     protected CacheManager newCollectionCacheManager(Class type, String cacheName, long expireTime) {
         CollectionType collectionType =
                 objectMapper.getTypeFactory().constructCollectionType(List.class, type);
