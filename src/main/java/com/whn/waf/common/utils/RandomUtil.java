@@ -133,7 +133,7 @@ public final class RandomUtil {
         return result;
     }
 
-    private static final String BASE_CHARS_STRINGS = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-";
+    private static final String BASE_CHARS_STRINGS = "abcdefghijklmnopqrstuvwxyz_0123456789-ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     public static String getRandomString(int length) { //length表示生成字符串的长度
 
