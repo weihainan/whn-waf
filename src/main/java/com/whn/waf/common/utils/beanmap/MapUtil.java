@@ -1,5 +1,6 @@
 package com.whn.waf.common.utils.beanmap;
 
+import com.google.common.collect.Maps;
 import org.apache.commons.beanutils.BeanUtils;
 
 import java.lang.reflect.InvocationTargetException;
@@ -136,7 +137,7 @@ public class MapUtil {
      * @return
      */
     public static <V> Map<String, V> toCamelCaseMap(Map<String, V> map) {
-        Map<String, V> newMap = new HashMap<String, V>();
+        Map<String, V> newMap = Maps.newHashMap();
         for (String key : map.keySet()) {
             safeAddToMap(newMap, JavaBeanUtil.toCamelCaseString(key), map.get(key));
         }
@@ -151,7 +152,7 @@ public class MapUtil {
      * @return
      */
     public static <V> Map<String, V> toUnderlineStringMap(Map<String, V> map) {
-        Map<String, V> newMap = new HashMap<String, V>();
+        Map<String, V> newMap = Maps.newHashMap();
         for (String key : map.keySet()) {
             newMap.put(JavaBeanUtil.toUnderlineString(key), map.get(key));
         }

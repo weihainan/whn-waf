@@ -161,7 +161,6 @@ public class ReflectUtil {
 
         for (Class<?> superClass = object.getClass(); superClass != Object.class; superClass = superClass.getSuperclass()) {
             try {
-                //superClass.getMethod(methodName, parameterTypes);
                 return superClass.getDeclaredMethod(methodName, parameterTypes);
             } catch (NoSuchMethodException e) {
                 //method does not defined in this level class, continue finding in the super class

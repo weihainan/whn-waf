@@ -41,9 +41,6 @@ public class ApplicationResolveInterceptor extends HandlerInterceptorAdapter {
                     throw WafBizException.of(ErrorCode.APPLICATION_NAME_IS_REQUIRED);
                 }
                 String application = (String) value;
-//                if (null == applicationService.findByName(application)) {
-//                    throw WafBizException.of(ErrorCode.APPLICATION_NAME_IS_NOT_REGISTERED);
-//                }
                 logger.debug("AppNameProvider set application name = {}", application);
                 AppNameProvider.set(application);
                 MDC.put("application", application);

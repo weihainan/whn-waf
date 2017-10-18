@@ -140,7 +140,7 @@ public class ObjectId implements Comparable<ObjectId>, java.io.Serializable {
      * @return the byte array
      */
     public byte[] toByteArray() {
-        byte b[] = new byte[12];
+        byte [] b = new byte[12];
         ByteBuffer bb = ByteBuffer.wrap(b);
         // by default BB is big endian like we need
         bb.putInt(_time);

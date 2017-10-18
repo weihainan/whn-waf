@@ -53,7 +53,7 @@ public final class Encrypt {
                 // 传入要加密的字符串
                 messageDigest.update(strText.getBytes());
                 // 得到 byte 類型结果
-                byte byteBuffer[] = messageDigest.digest();
+                byte [] byteBuffer = messageDigest.digest();
 
                 // 將 byte 轉換爲 string
                 StringBuffer strHexString = new StringBuffer();

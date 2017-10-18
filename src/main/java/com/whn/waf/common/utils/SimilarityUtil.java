@@ -16,7 +16,7 @@ import java.util.List;
 public class SimilarityUtil {
 
     private static int compare(String str, String target) {
-        int d[][];              // 矩阵
+        int [][] d;              // 矩阵
         int n = str.length();
         int m = target.length();
         int i;                  // 遍历str的

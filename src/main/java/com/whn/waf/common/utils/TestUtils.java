@@ -19,7 +19,7 @@ public class TestUtils {
         T t = null;
         try {
             t = cl.newInstance();
-            Method methods[] = cl.getMethods();
+            Method [] methods = cl.getMethods();
             for (Method method : methods) {
                 // 如果是set方法,进行随机数据的填充
                 if (method.getName().indexOf("set") == 0) {

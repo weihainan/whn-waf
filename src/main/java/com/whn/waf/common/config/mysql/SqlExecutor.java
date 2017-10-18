@@ -1,5 +1,7 @@
 package com.whn.waf.common.config.mysql;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -135,7 +137,7 @@ public class SqlExecutor {
      * @return 查询的结果对象集
      */
     public <T> List<T> queryForList(String sql, Class<T> requiredType) {
-        return queryForList(sql, new HashMap<String, Object>(), requiredType);
+        return queryForList(sql, Maps.<String, Object>newHashMap(), requiredType);
     }
 
     /**
@@ -170,7 +172,7 @@ public class SqlExecutor {
      * @return 每一行对应一个Map的List
      */
     public List<Map<String, Object>> queryForList(String sql) {
-        return queryForList(sql, new HashMap<String, Object>());
+        return queryForList(sql, Maps.<String, Object>newHashMap());
     }
 
     /**
@@ -182,12 +184,12 @@ public class SqlExecutor {
      * @return 每一行对应一个Map的List
      */
     public List<Map<String, Object>> queryForList(String sql, Map<String, ?> paramMap) {
-        final List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+        final List<Map<String, Object>> resultList = Lists.newArrayList();
         namedParameterJdbcTemplate.query(sql, paramMap, new RowCallbackHandler() {
             @Override
             public void processRow(ResultSet rs) throws SQLException {
 
-                Map<String, Object> map = new HashMap<String, Object>();
+                Map<String, Object> map = Maps.newHashMap();
                 ResultSetMetaData rsmd = rs.getMetaData();
                 for (int i = 1; i <= rsmd.getColumnCount(); i++) {
                     String columnLabel = rsmd.getColumnLabel(i);
@@ -211,7 +213,7 @@ public class SqlExecutor {
      * @return 查询到的类型对象
      */
     public <T> T queryForObject(String sql, Class<T> requiredType) {
-        return queryForObject(sql, new HashMap<String, Object>(), requiredType);
+        return queryForObject(sql, Maps.<String, Object>newHashMap(), requiredType);
     }
 
     /**
@@ -258,7 +260,7 @@ public class SqlExecutor {
      * @return 每一行对应一个Map
      */
     public Map<String, Object> queryForMap(String sql) {
-        Map<String, ?> paramMap = new HashMap<String, Object>();
+        Map<String, ?> paramMap = Maps.newHashMap();
         return queryForMap(sql, paramMap);
     }
 
@@ -275,10 +277,8 @@ public class SqlExecutor {
         try {
             return namedParameterJdbcTemplate.queryForMap(sql, paramMap);
         } catch (EmptyResultDataAccessException e) {
-//            logger.error(e.getMessage());
             return null;
         } catch (IncorrectResultSizeDataAccessException e) {
-//            logger.error(e.getMessage());
             List<Map<String, Object>> list = queryForList(sql, paramMap);
             return list.get(0);
         }

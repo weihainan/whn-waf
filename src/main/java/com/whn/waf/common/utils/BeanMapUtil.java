@@ -1,6 +1,7 @@
 package com.whn.waf.common.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.Maps;
 import com.whn.waf.common.base.constant.ErrorCode;
 import com.whn.waf.common.exception.WafBizException;
 import com.whn.waf.common.support.WafJsonMapper;
@@ -71,7 +72,7 @@ public class BeanMapUtil {
         if (bean == null) {
             return null;
         }
-        Map<String, Object> returnMap = new HashMap<String, Object>();
+        Map<String, Object> returnMap = Maps.newHashMap();
 
         try {
             BeanInfo beanInfo = Introspector.getBeanInfo(bean.getClass());

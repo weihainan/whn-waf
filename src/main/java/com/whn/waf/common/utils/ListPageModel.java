@@ -38,7 +38,6 @@ public class ListPageModel<T> {
         this.pageRecorders = pageRecorders;
         this.list = list;
         totalRows = list.size();
-        // it = list.iterator();
         hasPreviousPage = false;
         if ((totalRows % pageRecorders) == 0) {
             totalPages = totalRows / pageRecorders;
