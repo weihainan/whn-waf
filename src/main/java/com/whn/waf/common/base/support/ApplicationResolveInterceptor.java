@@ -1,3 +1,4 @@
+/*
 package com.whn.waf.common.base.support;
 
 import com.whn.waf.common.base.constant.ErrorCode;
@@ -14,10 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
+*/
 /**
  * @author weihainan.
  * @since 0.1 created on 2017/5/26.
  */
+/*
 public class ApplicationResolveInterceptor extends HandlerInterceptorAdapter {
 
     private static final Logger logger = LoggerFactory.getLogger(ApplicationResolveInterceptor.class);
@@ -56,3 +59,4 @@ public class ApplicationResolveInterceptor extends HandlerInterceptorAdapter {
     }
 
 }
+*/

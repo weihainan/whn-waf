@@ -1,7 +1,5 @@
 package com.whn.waf.common.config;
 
-import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import com.whn.waf.common.base.support.ApplicationResolveInterceptor;
 import com.whn.waf.common.support.WafJsonMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -31,7 +29,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.handler.HandlerExceptionResolverComposite;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 
-import javax.xml.transform.Source;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -122,7 +119,7 @@ public abstract class AbstractWebMvcConfigurerAdpter extends WebMvcConfigurerAda
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         super.addInterceptors(registry);
-        registry.addInterceptor(new ApplicationResolveInterceptor());
+        //registry.addInterceptor(new ApplicationResolveInterceptor());
     }
 
 }
