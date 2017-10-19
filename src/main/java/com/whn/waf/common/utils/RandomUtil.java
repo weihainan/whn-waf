@@ -135,14 +135,12 @@ public final class RandomUtil {
         return result;
     }
 
-    private static final String BASE_CHARS_STRINGS = "abcdefghijklmnopqrstuvwxyz_0123456789-ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String BASE_CHARS_STRINGS = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     public static String getRandomString(int length) { //length表示生成字符串的长度
-
-        Random random = new Random();
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < length; i++) {
-            int number = random.nextInt(BASE_CHARS_STRINGS.length());
+            int number = nextInt(BASE_CHARS_STRINGS.length());
             sb.append(BASE_CHARS_STRINGS.charAt(number));
         }
         return sb.toString();
