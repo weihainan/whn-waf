@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 
 /**
- * 与BaseModuleDomain的区别是时间类型不一样 这里是long 当时的毫秒数  DateTime.now().getMills()l
+ * 与BaseModuleDomain的区别是时间类型不一样 这里是long 当时的毫秒数  DateTime.now().getMills()
  * @author weihainan
  * @since 0.1 created on 2017/9/8
  */
