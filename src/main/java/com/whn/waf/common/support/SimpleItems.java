@@ -5,7 +5,13 @@ import com.google.common.collect.Collections2;
 
 import java.util.Collection;
 
-
+/**
+ * 用于响应简单集合的请求结果
+ *
+ * @param <T> 响应实体的类型
+ * @author weihainan.
+ * @since 0.1 created on 2017/3/10.
+ */
 public class SimpleItems<T> {
 
     private Collection<T> items;

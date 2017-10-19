@@ -7,6 +7,13 @@ import com.google.common.collect.Collections2;
 import java.util.Collection;
 import java.util.Collections;
 
+/**
+ * 用于响应集合和总数
+ *
+ * @param <T> 响应实体的类型
+ * @author weihainan.
+ * @since 0.1 created on 2017/3/10.
+ */
 public class PageableItems<T> extends SimpleItems<T> {
 
     @JsonProperty("total")
