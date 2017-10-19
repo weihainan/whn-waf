@@ -1,5 +1,7 @@
 package com.whn.waf.common.utils;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -146,12 +148,17 @@ public final class RandomUtil {
         return sb.toString();
     }
 
+    public static String randomAlphanumeric(final int count) {
+        return RandomStringUtils.randomAlphanumeric(count);
+    }
+
 
     public static void main(String[] args) {
         System.out.println(getRandomString(1));
         System.out.println(getRandomString(5));
         System.out.println(getRandomString(20));
         System.out.println(getRandomString(13));
+        System.out.println(randomAlphanumeric(13));
     }
 
 }
