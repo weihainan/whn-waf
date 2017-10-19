@@ -36,7 +36,7 @@ public class CommonUtil {
      * 把map先转为json,再转为实体
      */
     public static <T> T getData(Object object, Class<T> type) {
-        if (object == null) {
+        if (object == null || null ==type) {
             return null;
         }
         try {
