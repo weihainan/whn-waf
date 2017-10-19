@@ -23,7 +23,7 @@ public class LogMDCFilter extends OncePerRequestFilter {
         StringBuilder requestId = new StringBuilder(20);
         requestId.append(RandomStringUtils.randomAlphanumeric(16)).append('@').append(Thread.currentThread().getId());
         try {
-            MDC.put("RequestId", requestId);
+            MDC.put("RequestId", requestId.toString());
             filterChain.doFilter(request, response);
         } finally {
             MDC.clear();
