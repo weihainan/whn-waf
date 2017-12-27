@@ -29,7 +29,8 @@ import java.sql.SQLException;
  */
 @Conditional(MyBatisSupportCondition.class)
 @Configuration
-@EnableTransactionManagement
+/**开启注解式事务并使用cglib代理*/
+@EnableTransactionManagement(proxyTargetClass = true)
 @PropertySource("classpath:druid.properties")
 @MapperScan({
         "com.whn.*.modules.*.mapper"
