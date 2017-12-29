@@ -1,7 +1,10 @@
 package com.whn.waf.common.utils.json;
 
 
+import com.whn.waf.common.support.WafJsonMapper;
 import net.sf.json.JSONObject;
+
+import java.util.HashMap;
 
 /**
  * @author weihainan.
@@ -17,11 +20,23 @@ public class JsonStringFormatUtil {
     }
 
     /**
-     * 验证字符串是否符合json格式
+     * 验证字符串是否符合json格式 较为宽松
      */
     public static boolean valid(String jsonStr) {
         try {
             JSONObject.fromObject(jsonStr);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /**
+     * 验证字符串是否符合json格式 严格的审查 单引号不行
+     */
+    public static boolean validStrict(String jsonStr) {
+        try {
+            WafJsonMapper.parse(jsonStr, HashMap.class);
             return true;
         } catch (Exception e) {
             return false;
@@ -89,7 +104,7 @@ public class JsonStringFormatUtil {
         System.out.println(JsonStringFormatUtil.valid(str));
 
         String jsonStr = "{\"website\":\"oschina.net\",'name':'123'}";
-        System.out.println(jsonStr + ":" + JsonStringFormatUtil.valid(jsonStr));
+        System.out.println(JsonStringFormatUtil.valid(jsonStr));
         JsonStringFormatUtil.printJson(jsonStr);
     }
 }
